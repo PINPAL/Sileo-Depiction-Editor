@@ -13,6 +13,9 @@ config =
         ]
     }
 
+// Variable that stores which tab the user is currently in
+var currentViewingTab = 0
+
 renderSileoDepiction(config)
 
 //Generate from Config Function
@@ -79,12 +82,9 @@ function renderSileoDepiction(config) {
         }
         // Add Tab Content to MainWrapper
         document.getElementById("mainWrapper").appendChild(tabContent)
-        // Initial Styling of Pill Selector (Page Load)
-        document.getElementsByClassName("pillText")[0].style.color = "var(--tint-color)"
-        document.getElementsByClassName("pillSelectorLine")[0].style.left = (50 / config.tabs.length) + "%"
-        // Initial Display of Main Content
-        document.getElementsByClassName("tabContent")[0].style.display = "block"
     }
+    // Initial Styling of Pill Selector (Switch to the currently being viewed tab)
+    changePillSelector(document.getElementsByClassName("pillText")[currentViewingTab])
 }
 
 // Initialise Color Picker on Sidebar
@@ -159,7 +159,6 @@ function toggleEditUI() {
 }
 
 // Switch between tabs (in preview)
-var currentViewingTab = 0
 function changePillSelector(element) {
     // Reset color of all Pill Texts
     pillTexts = document.getElementsByClassName("pillText")
