@@ -100,7 +100,7 @@
                 <!-- Edit DepictionHeaderView -->
                 <div id="editDepictionHeaderView" style="display:none">
                     <p>Creates a large title intended for separating major sections of a given tab.</p>
-                    <input placeholder="Heading Text" type="text" class="titleField">
+                    <input placeholder="Heading Title" type="text" class="titleField">
                     <div class="optionWrapper">
                         <div class="tooltip">Allow margins (white space) above & below the heading.</div>
                         <label class="checkboxWrapper">
@@ -131,7 +131,7 @@
                 <!-- Edit DepictionSubheaderView -->
                 <div id="editDepictionSubheaderView" style="display:none">
                     <p>Subheaders are smaller headers.</p>
-                    <input placeholder="Subheading Text" type="text" class="titleField">
+                    <input placeholder="Subheading Title" type="text" class="titleField">
                     <div class="optionWrapper">
                         <div class="tooltip">Allow margins (white space) above & below the subheading.</div>
                         <label class="checkboxWrapper">
@@ -153,12 +153,20 @@
                 <!-- Edit DepictionlabelView -->
                 <div id="editDepictionLabelView" style="display:none">
                         <p>Labels are highly-customizable snippets of text with a customizable color.</p>
-                        <input placeholder="Label Text" type="text" class="titleField">
+                        <input placeholder="Label Text" type="text" class="textField">
                         <div class="optionWrapper">
                             <div class="tooltip">Allow margins (white space) above & below the label.</div>
                             <label class="checkboxWrapper">
                                 Use Margins
                                 <input type="checkbox" class="useMargins" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="optionWrapper">
+                            <div class="tooltip">Add a slight margin to the top and bottom of the label.</div>
+                            <label class="checkboxWrapper">
+                                Use Padding
+                                <input type="checkbox" class="usePadding">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -174,7 +182,7 @@
                         <div class="optionWrapper">
                             <div class="tooltip">Change the weight (thickness) of text within the label.</div>
                             Font Weight
-                            <select class="alignment">
+                            <select class="fontWeight">
                                 <option value="black" style="font-weight: 1000">Black</option>
                                 <option value="heavy" style="font-weight: 800">Heavy</option>
                                 <option value="bold" style="font-weight: bold">Bold</option>
@@ -185,10 +193,11 @@
                             </select>
                         </div>
                         <div class="optionWrapper">
-                                <div class="tooltip">Change the size of text within the label.</div>
-                                Font Size
-                                <input type="number" class="fontSize" min="0" max="40" value=12>pt
-                            </div>
+                            <div class="tooltip">Change the size of text within the label.</div>
+                            Font Size
+                            <input type="number" class="fontSize" min="0" max="40" value=12>pt
+                        </div>
+                        <input type="text" class="fontColor" placeholder="Font Color: #000000">
                 </div>
 
                 <div id="editDepictionMarkdownView" style="display:none"> 

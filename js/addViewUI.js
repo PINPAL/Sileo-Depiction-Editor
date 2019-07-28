@@ -15,9 +15,10 @@ function saveNewView(type) {
     let editUI = document.getElementById("edit" + type)
     // Handle View
     switch (type) {
+
         case "DepictionHeaderView":
             // Title
-            var title = "Heading Text"
+            var title = "Heading Title"
             if (editUI.getElementsByClassName("titleField")[0].value != "") {
                 title = editUI.getElementsByClassName("titleField")[0].value
             }
@@ -27,17 +28,38 @@ function saveNewView(type) {
             view.useBoldText = editUI.getElementsByClassName("useBoldText")[0].checked
             view.alignment = editUI.getElementsByClassName("alignment")[0].value
             break;
+
         case "DepictionSubheaderView":
+            // Title
+            var title = "Subheading Title"
+            if (editUI.getElementsByClassName("titleField")[0].value != "") {
+                title = editUI.getElementsByClassName("titleField")[0].value
+            }
+            view.title = title
+            // Set other properties
+            view.useMargins = editUI.getElementsByClassName("useMargins")[0].checked
+            view.useBoldText = editUI.getElementsByClassName("useBoldText")[0].checked
+            break;
+        
+        case "DepictionLabelView":
                 // Title
-                var title = "Subheading Text"
-                if (editUI.getElementsByClassName("titleField")[0].value != "") {
-                    title = editUI.getElementsByClassName("titleField")[0].value
+                var text = "Label Text"
+                if (editUI.getElementsByClassName("textField")[0].value != "") {
+                    text = editUI.getElementsByClassName("textField")[0].value
                 }
-                view.title = title
+                view.text = text
                 // Set other properties
+                view.alignment = editUI.getElementsByClassName("alignment")[0].value
                 view.useMargins = editUI.getElementsByClassName("useMargins")[0].checked
-                view.useBoldText = editUI.getElementsByClassName("useBoldText")[0].checked
+                view.usePadding = editUI.getElementsByClassName("usePadding")[0].checked
+                view.fontWeight = editUI.getElementsByClassName("fontWeight")[0].value
+                view.fontSize = editUI.getElementsByClassName("fontSize")[0].value
+                // Font color
+                if (editUI.getElementsByClassName("fontColor")[0].value != "") {
+                    view.textColor = editUI.getElementsByClassName("fontColor")[0].value
+                }
                 break;
+
         default:
             throw("View is not yet supported")
     }

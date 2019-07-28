@@ -131,6 +131,18 @@
         width: calc(100% - 25px);
         box-sizing: border-box;
     }
+    // Font Color Input Box
+    .fontColor {
+        padding: 0 20px !important;
+        width: calc(50% - 20px) !important;
+        position: relative !important;
+        display: inline-block !important;
+        margin-bottom: 12px !important;
+        margin-left: 6px !important;
+        margin-right: 6px !important;
+        margin-top: 8px !important;
+        text-align: center !important;
+    }
 
 
     // Form Elements 
@@ -206,6 +218,9 @@
 
             // Create a custom checkbox
             .checkmark {
+                border-width: 1px;
+                border-color: var(--tint-color);
+                border-style: solid;
                 overflow: hidden;
                 border-radius: 50%;
                 position: absolute;
