@@ -1,0 +1,12 @@
+// Class Added to Body when UI is set to hidden
+.hideEditUI {
+    // Class on all elements that are part of the edit UI
+    .editUI {
+        display: none;
+    }
+
+    // Increate width of header pill selector (now edit tabs is hidden)
+    .headerPillSelector {
+        max-width: 100% !important;
+    }
+}

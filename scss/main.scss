@@ -1,0 +1,16 @@
+@import 'editor.scss';
+@import 'navbar.scss';
+
+@import 'alerts/alerts.scss';
+@import 'alerts/editTabsUI.scss';
+@import 'alerts/editBannerUI.scss';
+
+@import 'hideEditUI.scss';
+
+html {
+    --body-bg-color: #f8f9fa;
+}
+
+body {
+    background-color: var(--body-bg-color);
+}

@@ -1,0 +1,17 @@
+/* Edit Image UI */
+#editBannerUI input {
+    text-align: left;
+    font-size: 12pt;
+    display: block;
+    background-color: rgba(0,0,0,.1);
+    outline: none !important;
+    box-shadow: none;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    border-radius: 100px;
+    width: calc(100% - 70px);
+}
