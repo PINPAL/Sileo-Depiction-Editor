@@ -22,6 +22,7 @@ function displayError(error) {
 
 // Function to hide alert 
 function hideAlert() {
+    document.getElementById("alertWindow").classList.remove("switchAlertPage")
     document.getElementById("alertErrors").innerHTML = ""
     document.getElementsByTagName("body")[0].classList.remove("alertVisible")
     document.getElementById("editTabsUI").style.display = "none"
