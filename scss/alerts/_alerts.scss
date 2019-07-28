@@ -1,6 +1,8 @@
 // Class Added to body to toggle alert
 .alertVisible {
-    animation: popAlert 0.6s ease;
+    #alertWindow {
+        animation: popAlert 0.6s ease;
+    }
 
     #everythingWrapper {
         filter: blur(4px);

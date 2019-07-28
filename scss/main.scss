@@ -1,5 +1,6 @@
 @import 'editor.scss';
 @import 'navbar.scss';
+@import 'sidebar.scss';
 
 @import 'alerts/alerts.scss';
 @import 'alerts/editTabsUI.scss';
@@ -9,6 +10,7 @@
 
 html {
     --body-bg-color: #f8f9fa;
+    --sidebarTableCellBg: rgba(0,0,0,.03);
 }
 
 body {

@@ -1,5 +1,6 @@
 config =
     {
+        "class": "DepictionTabView",
         "minVersion": "0.1",
         "tabs": [
             {
@@ -82,7 +83,17 @@ function renderSileoDepiction(config) {
     }
 }
 
-
+// Initialise Color Picker on Sidebar
+var tintColorPicker = new CP(document.getElementById("sidebarColorPicker"))
+document.getElementById("sidebarColorPicker").value = "#2cb1be"
+// Update Color Picker when color Changes
+tintColorPicker.on("drag", function(color) {
+    document.getElementById("sidebarColorPicker").getElementsByTagName("input")[0].value = '#' + color;
+    document.getElementsByClassName("colorPreview")[0].style.backgroundColor = '#' + color;
+    document.getElementsByTagName('html')[0].style.setProperty("--tint-color", '#' + color)
+    config.tintColor = '#' + color
+});
+    
 
 // Function called when user clicks "Add View" button
 function addView(element) {
