@@ -10,6 +10,8 @@
 
 html {
     --body-bg-color: #f8f9fa;
+    --dark-ui-color: rgba(0,0,0,.1);
+    --darker-ui-color: rgba(0,0,0,.2);
     --sidebarTableCellBg: rgba(0,0,0,.03);
 }
 
@@ -34,6 +36,6 @@ input[type=text] {
     padding-left: 30px;
     padding-right: 30px;
     box-sizing: border-box;
-    border-radius: 100px;
+    border-radius: 10px;
     width: calc(100% - 70px);
 }

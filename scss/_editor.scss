@@ -1,5 +1,6 @@
 #previewBox {
     scrollbar-width: none;
+    overflow-x: visible;
     overflow-y: scroll;
     position: relative;
     box-shadow: 10px 10px 15px rgba(0,0,0,.05),
@@ -96,7 +97,7 @@
     padding-left: 15px;
 }
 
-/* Add View Button */
+// Add View Button
 .addViewButton {
     opacity: 0.4;
     cursor: pointer;

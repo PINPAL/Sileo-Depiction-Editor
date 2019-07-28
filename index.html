@@ -13,7 +13,7 @@
     <body>
         <div id="realPageNavbar">
             <div>
-                <span class="realLeftNav">Navbar Title</span>
+                <span class="realLeftNav">Sileo Depiction Editor</span>
                 <span class="realRightNav" onClick="toggleEditUI()">Toggle Edit UI</span>
             </div>
         </div>
@@ -102,6 +102,7 @@
                     <p>Creates a large title intended for separating major sections of a given tab.</p>
                     <input placeholder="Heading Text" type="text" class="titleField">
                     <div class="optionWrapper">
+                        <div class="tooltip">Allow margins (white space) above & below the heading.</div>
                         <label class="checkboxWrapper">
                             Use Margins
                             <input type="checkbox" class="useMargins" checked="checked">
@@ -109,6 +110,7 @@
                         </label>
                     </div>
                     <div class="optionWrapper">
+                        <div class="tooltip">Make the text bold.</div>
                         <label class="checkboxWrapper">
                             Bold Text
                             <input type="checkbox" class="useBoldText" checked="checked" >
@@ -116,6 +118,7 @@
                         </label>
                     </div>
                     <div class="optionWrapper">
+                        <div class="tooltip">Change the position of the text within the heading.</div>
                         Text Alignment
                         <select class="alignment">
                             <option value="0">Left</option>
@@ -125,10 +128,12 @@
                     </div>
                 </div>
 
+                <!-- Edit DepictionSubheaderView -->
                 <div id="editDepictionSubheaderView" style="display:none">
                     <p>Subheaders are smaller headers.</p>
                     <input placeholder="Subheading Text" type="text" class="titleField">
                     <div class="optionWrapper">
+                        <div class="tooltip">Allow margins (white space) above & below the subheading.</div>
                         <label class="checkboxWrapper">
                             Use Margins
                             <input type="checkbox" class="useMargins" checked="checked">
@@ -136,6 +141,7 @@
                         </label>
                     </div>
                     <div class="optionWrapper">
+                        <div class="tooltip">Make the text bold.</div>
                         <label class="checkboxWrapper">
                             Bold Text
                             <input type="checkbox" class="useBoldText" checked="checked" >
@@ -144,7 +150,45 @@
                     </div>
                 </div>
 
+                <!-- Edit DepictionlabelView -->
                 <div id="editDepictionLabelView" style="display:none">
+                        <p>Labels are highly-customizable snippets of text with a customizable color.</p>
+                        <input placeholder="Label Text" type="text" class="titleField">
+                        <div class="optionWrapper">
+                            <div class="tooltip">Allow margins (white space) above & below the label.</div>
+                            <label class="checkboxWrapper">
+                                Use Margins
+                                <input type="checkbox" class="useMargins" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="optionWrapper">
+                            <div class="tooltip">Change the position of the text within the label.</div>
+                            Text Alignment
+                            <select class="alignment">
+                                <option value="0">Left</option>
+                                <option value="1">Center</option>
+                                <option value="2">Right</option>
+                            </select>
+                        </div>
+                        <div class="optionWrapper">
+                            <div class="tooltip">Change the weight (thickness) of text within the label.</div>
+                            Font Weight
+                            <select class="alignment">
+                                <option value="black" style="font-weight: 1000">Black</option>
+                                <option value="heavy" style="font-weight: 800">Heavy</option>
+                                <option value="bold" style="font-weight: bold">Bold</option>
+                                <option value="semibold" style="font-weight: 600">Semibold</option>
+                                <option value="regular" style="font-weight: regular" selected="selected">Regular</option>
+                                <option value="thin" style="font-weight: 200">Thin</option>
+                                <option value="ultralight" style="font-weight: 100">Ultralight</option>
+                            </select>
+                        </div>
+                        <div class="optionWrapper">
+                                <div class="tooltip">Change the size of text within the label.</div>
+                                Font Size
+                                <input type="number" class="fontSize" min="0" max="40" value=12>pt
+                            </div>
                 </div>
 
                 <div id="editDepictionMarkdownView" style="display:none"> 
@@ -156,12 +200,11 @@
     </body>
     <script src='js/color-picker.js'></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
-    <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/packageIconHandler.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown"></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/viewHandler.js"></script>
     <script src="js/alerts.js"></script>
     <script src="js/addViewUI.js"></script>
     <script src="js/editBannerUI.js"></script>
     <script src="js/editTabsUI.js"></script>
-    <script src="editor.js"></script>
+    <script src="js/main.js"></script>
 </html>

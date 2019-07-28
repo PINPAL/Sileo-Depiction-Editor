@@ -1,8 +1,9 @@
 // Function called when user picks a view to add
 function addView(type) {
+    let typeName = type.replace(/(Depiction)|(View)/g,"")
     switchAlertPage(
-        "Edit View",
-        "Customize View Content",
+        "Edit " + typeName,
+        "Customize " + typeName + " Content",
         "edit" + type,
         "saveNewView('" + type + "')"
     )

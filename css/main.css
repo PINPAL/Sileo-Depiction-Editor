@@ -1,5 +1,6 @@
 #previewBox {
   scrollbar-width: none;
+  overflow-x: visible;
   overflow-y: scroll;
   position: relative;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05), -10px -10px 15px rgba(0, 0, 0, 0.05);
@@ -90,7 +91,6 @@
   padding-right: 50px;
   padding-left: 15px; }
 
-/* Add View Button */
 .addViewButton {
   opacity: 0.4;
   cursor: pointer;
@@ -269,11 +269,11 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.75);
-  transition: oapcity 0.35s ease;
-  -webkit-transition: oapcity 0.35s ease;
-  -moz-transition: oapcity 0.35s ease;
-  -o-transition: oapcity 0.35s ease;
-  -ms-transition: oapcity 0.35s ease; }
+  transition: opacity 0.35s ease;
+  -webkit-transition: opacity 0.35s ease;
+  -moz-transition: opacity 0.35s ease;
+  -o-transition: opacity 0.35s ease;
+  -ms-transition: opacity 0.35s ease; }
 
 #alertWindow {
   width: calc(100% - 20px);
@@ -323,9 +323,55 @@
     padding-bottom: 5px;
     background-color: #ed4040;
     color: white; }
+  #alertWindow input[type=text] {
+    height: 50px;
+    width: calc(100% - 25px);
+    box-sizing: border-box; }
   #alertWindow .optionWrapper {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    background-color: var(--dark-ui-color);
+    border-radius: 10px;
     display: inline-block;
-    margin-bottom: 12px; }
+    margin-bottom: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border-color: rgba(0, 0, 0, 0);
+    border-width: 2px;
+    border-style: dashed;
+    transition: border-color 0.25s ease, border-radius 0.15s ease;
+    -webkit-transition: border-color 0.25s ease, border-radius 0.15s ease;
+    -moz-transition: border-color 0.25s ease, border-radius 0.15s ease;
+    -o-transition: border-color 0.25s ease, border-radius 0.15s ease;
+    -ms-transition: border-color 0.25s ease, border-radius 0.15s ease; }
+    #alertWindow .optionWrapper .tooltip {
+      color: white;
+      width: calc(100% + 4px);
+      box-sizing: border-box;
+      padding: 16px 8px;
+      border-radius: 10px 10px 0 0;
+      background-color: var(--tint-color);
+      line-height: normal;
+      position: absolute;
+      top: -8px;
+      left: -2px;
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.15s ease, opacity 0.35s ease;
+      -webkit-transition: transform 0.15s ease, opacity 0.35s ease;
+      -moz-transition: transform 0.15s ease, opacity 0.35s ease;
+      -o-transition: transform 0.15s ease, opacity 0.35s ease;
+      -ms-transition: transform 0.15s ease, opacity 0.35s ease; }
+    #alertWindow .optionWrapper:hover {
+      border-color: var(--tint-color);
+      border-radius: 0 0 10px 10px; }
+      #alertWindow .optionWrapper:hover .tooltip {
+        visibility: visible;
+        transform: translateY(-100%);
+        opacity: 1; }
     #alertWindow .optionWrapper .checkboxWrapper {
       padding: 10px;
       position: relative;
@@ -376,21 +422,19 @@
   height: 50px; }
 
 #editTabsUI input {
-  width: calc(100% - 60px);
+  width: calc(100% - 60px) !important;
   float: left; }
 
 #editTabsUI #addTabButton {
   cursor: pointer;
-  margin-top: 20px;
-  max-width: 250px;
+  margin-top: 40px;
+  width: calc(100% - 100px);
   font-size: 12pt;
-  background-color: rgba(0, 0, 0, 0.25);
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
+  background-color: var(--darker-ui-color);
+  height: 50px;
+  line-height: 50px;
   box-sizing: border-box;
-  border-radius: 100px; }
+  border-radius: 10px; }
 
 #editTabsUI .deleteField {
   cursor: pointer;
@@ -399,8 +443,8 @@
   background-position: center;
   background-image: url(../img/delete.svg);
   float: right;
-  width: calc(12pt + 25px);
-  height: calc(12pt + 25px);
+  width: 50px;
+  height: 50px;
   background-color: #ed4040;
   border-radius: 50%; }
 
@@ -446,6 +490,8 @@
 
 html {
   --body-bg-color: #f8f9fa;
+  --dark-ui-color: rgba(0,0,0,.1);
+  --darker-ui-color: rgba(0,0,0,.2);
   --sidebarTableCellBg: rgba(0,0,0,.03); }
 
 body {
@@ -467,5 +513,5 @@ input[type=text] {
   padding-left: 30px;
   padding-right: 30px;
   box-sizing: border-box;
-  border-radius: 100px;
+  border-radius: 10px;
   width: calc(100% - 70px); }

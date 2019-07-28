@@ -58,6 +58,7 @@ function renderSileoDepiction(config) {
         tabContent.appendChild(addButton)
         // Add Content Views to Tab
         for (currentViewNum = 0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
+            // Handle View
             var view = handleView(config.tabs[currentTab].views[currentViewNum], false)
             tabContent.appendChild(view)
             // Create Editor Add View Button
