@@ -124,7 +124,7 @@ function indexInClass(node) {
 // Function called when user clicks "Add View" button
 var newViewIndex
 function callAddViewUI(element) {
-    newViewIndex = returnNodeNumber(element) / 2
+    newViewIndex = indexInClass(element)
     createAlert(
         "Add View",
         "Add Section to " + element.parentElement.id.slice(0,-7),
