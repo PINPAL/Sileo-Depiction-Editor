@@ -126,7 +126,7 @@ function callAddViewUI(element) {
         "Add View",
         "Add Section to " + element.parentElement.id.slice(0,-7),
         "addViewUI",
-        ""
+        null
     )
 }
 

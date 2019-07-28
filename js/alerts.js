@@ -29,11 +29,30 @@ function hideAlert() {
     document.getElementById("addViewUI").style.display = "none"
 }
 
+// Function to "scroll" to second alert
+function switchAlertPage(headerString, subheaderString, contentType, saveEvent) {
+    // Hide old content
+    document.getElementById("editTabsUI").style.display = "none"
+    document.getElementById("editBannerUI").style.display = "none"
+    document.getElementById("addViewUI").style.display = "none"
+    // Set new alert
+    document.getElementById("alertHeader").innerText = headerString
+    document.getElementById("alertSubheader").innerText = subheaderString
+    if (saveEvent != null) {
+        document.getElementById("alertButton").style.display = "block"
+        document.getElementById("alertButton").setAttribute("onClick",saveEvent)
+    }
+    document.getElementById("alertWindow").classList.add("switchAlertPage")
+}
+
 // Function to create an alert
 function createAlert(headerString,subheaderString,contentType,saveEvent) {
     document.getElementById("alertHeader").innerText = headerString
     document.getElementById("alertSubheader").innerText = subheaderString
-    document.getElementById("alertButton").setAttribute("onClick",saveEvent)
+    if (saveEvent != null) {
+        document.getElementById("alertButton").style.display = "block"
+        document.getElementById("alertButton").setAttribute("onClick",saveEvent)
+    }
     if (contentType == "editTabUI") {
         // Show correct content
         document.getElementById("editTabsUI").style.display = "block"

@@ -258,7 +258,22 @@
   100% {
     transform: translate(-50%, -50%) scale(1); } }
 
+@keyframes switchAlertPage {
+  50% {
+    transform: translate(-150%, -50%) scale(0);
+    opacity: 0; }
+  51% {
+    transform: translate(50%, -50%) scale(0);
+    opacity: 0; }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1; } }
+
+.switchAlertPage {
+  animation: switchAlertPage 0.6s ease !important; }
+
 #alertContainer {
+  overflow: hidden;
   display: none;
   opacity: 0;
   width: 100%;

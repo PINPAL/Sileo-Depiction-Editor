@@ -8,6 +8,12 @@ function addView(type) {
     )
     // Re-render Preview
     renderSileoDepiction(config)
+    switchAlertPage(
+        "Edit View",
+        "subheader",
+        "",
+        ""
+    )
     // Hide popup
-    hideAlert()
+    //hideAlert()
 }
