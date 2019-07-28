@@ -22,28 +22,36 @@ function displayError(error) {
 
 // Function to hide alert 
 function hideAlert() {
+    document.getElementById("alertButton").style.display = "none"
     document.getElementById("alertWindow").classList.remove("switchAlertPage")
     document.getElementById("alertErrors").innerHTML = ""
     document.getElementsByTagName("body")[0].classList.remove("alertVisible")
-    document.getElementById("editTabsUI").style.display = "none"
-    document.getElementById("editBannerUI").style.display = "none"
-    document.getElementById("addViewUI").style.display = "none"
+    // Hide old content
+    clearAlertContent()
+}
+
+// Hide old alert content
+function clearAlertContent() {
+    let hiddenIDs = [
+        "editTabsUI",
+        "editBannerUI",
+        "addViewUI",
+        "editDepictionHeaderView",
+        "editDepictionSubheaderView",
+        "editDepictionLabelView"
+    ]
+    for (i=0; i<hiddenIDs.length; i++) {
+        document.getElementById(hiddenIDs[i]).style.display = "none"
+    }
 }
 
 // Function to "scroll" to second alert
 function switchAlertPage(headerString, subheaderString, contentType, saveEvent) {
     // Hide old content
-    document.getElementById("editTabsUI").style.display = "none"
-    document.getElementById("editBannerUI").style.display = "none"
-    document.getElementById("addViewUI").style.display = "none"
-    // Set new alert
-    document.getElementById("alertHeader").innerText = headerString
-    document.getElementById("alertSubheader").innerText = subheaderString
-    if (saveEvent != null) {
-        document.getElementById("alertButton").style.display = "block"
-        document.getElementById("alertButton").setAttribute("onClick",saveEvent)
-    }
+    clearAlertContent()
+    // Update Alert
     document.getElementById("alertWindow").classList.add("switchAlertPage")
+    createAlert(headerString,subheaderString,contentType,saveEvent)
 }
 
 // Function to create an alert
@@ -66,11 +74,8 @@ function createAlert(headerString,subheaderString,contentType,saveEvent) {
         }
         // Show correct content
         document.getElementById("editBannerUI").style.display = "block"
-    } else if (contentType == "addViewUI") {
-        // Show correct content
-        document.getElementById("addViewUI").style.display = "block"
     } else {
-        document.getElementById("alertContent").innerHTML = contentType
+        document.getElementById(contentType).style.display = "block"
     }
     document.getElementsByTagName("body")[0].classList.add("alertVisible")
 }

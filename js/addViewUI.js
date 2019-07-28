@@ -6,14 +6,10 @@ function addView(type) {
         0, // Delete 0 items
         {"class":type} // Object to be inserted (type is passed when user chooses which view to add)
     )
-    // Re-render Preview
-    renderSileoDepiction(config)
     switchAlertPage(
         "Edit View",
-        "subheader",
-        "",
+        "Customize View Content",
+        "edit" + type,
         ""
     )
-    // Hide popup
-    //hideAlert()
 }

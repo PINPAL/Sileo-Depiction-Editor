@@ -207,24 +207,11 @@
       margin-top: 5px;
       margin-bottom: 10px; }
     #sidebar .settingsCell input {
-      border-color: #dfdfdf;
-      border-style: solid;
-      border-width: 1px;
-      float: left;
-      text-align: left;
-      font-size: 12pt;
-      display: block;
-      background-color: rgba(0, 0, 0, 0.15);
-      outline: none !important;
-      box-shadow: none;
-      border: none;
       padding-top: 9px;
       padding-bottom: 9px;
-      padding-left: 30px;
-      padding-right: 30px;
-      box-sizing: border-box;
       border-radius: 10px;
-      width: calc(100% - 70px); }
+      background-color: rgba(0, 0, 0, 0.15);
+      float: left; }
     #sidebar .settingsCell .colorPreview {
       border-color: #dfdfdf;
       border-style: solid;
@@ -307,12 +294,12 @@
     margin-top: 0;
     font-size: 16pt; }
   #alertWindow * {
-    margin: 0 auto;
+    margin: 8px auto;
     max-width: 600px;
     text-align: center; }
   #alertWindow #alertButton {
     cursor: pointer;
-    margin-top: 60px;
+    margin-top: 40px;
     max-width: 300px;
     width: 100%;
     border-radius: 10px;
@@ -347,21 +334,8 @@
   height: 50px; }
 
 #editTabsUI input {
-  float: left;
-  text-align: left;
-  font-size: 12pt;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.1);
-  outline: none !important;
-  box-shadow: none;
-  border: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
-  box-sizing: border-box;
-  border-radius: 100px;
-  width: calc(100% - 70px); }
+  width: calc(100% - 60px);
+  float: left; }
 
 #editTabsUI #addTabButton {
   cursor: pointer;
@@ -378,32 +352,15 @@
 
 #editTabsUI .deleteField {
   cursor: pointer;
-  background-size: 25px;
+  background-size: 23px;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(../img/delete.svg);
   float: right;
-  width: 50px;
-  height: 50px;
+  width: calc(12pt + 25px);
+  height: calc(12pt + 25px);
   background-color: #ed4040;
   border-radius: 50%; }
-
-/* Edit Image UI */
-#editBannerUI input {
-  text-align: left;
-  font-size: 12pt;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.1);
-  outline: none !important;
-  box-shadow: none;
-  border: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
-  box-sizing: border-box;
-  border-radius: 100px;
-  width: calc(100% - 70px); }
 
 #addViewUI {
   max-width: 100%;
@@ -446,3 +403,22 @@ html {
 
 body {
   background-color: var(--body-bg-color); }
+
+input[type=text] {
+  border-color: #dfdfdf;
+  border-style: solid;
+  border-width: 1px;
+  text-align: left !important;
+  font-size: 12pt;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.1);
+  outline: none !important;
+  box-shadow: none;
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+  border-radius: 100px;
+  width: calc(100% - 70px); }
