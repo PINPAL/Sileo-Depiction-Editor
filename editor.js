@@ -5,10 +5,7 @@ config =
         "tabs": [
             {
                 "tabname":"Tab Name",
-                "views":[
-                    {"class":"DepictionSubheaderView","useBoldText":true,"title":"Test DepictionSubheaderView"},
-                    {"class":"DepictionTableTextView","title":"Testing","text":"DepictionTableTextView"}
-                ]
+                "views":[]
             }
         ]
     }
