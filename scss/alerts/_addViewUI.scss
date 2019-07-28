@@ -12,6 +12,11 @@
         border-width: 2px;
         border-style: dashed;
         border-color: rgba(0,0,0,0);
+        transition: border-color 0.15s ease, font-weight 0.15s ease, color 0.15s ease;
+        -webkit-transition: border-color 0.15s ease, font-weight 0.15s ease, color 0.15s ease;
+        -moz-transition: border-color 0.15s ease, font-weight 0.15s ease, color 0.15s ease;
+        -o-transition: border-color 0.15s ease, font-weight 0.15s ease, color 0.15s ease;
+        -ms-transition: border-color 0.15s ease, font-weight 0.15s ease, color 0.15s ease;
 
         &:hover {
             border-color: var(--tint-color);
@@ -29,7 +34,7 @@
         }
 
         .viewPreview {
-            border-radius: 5px;
+            border-radius: 9px;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;

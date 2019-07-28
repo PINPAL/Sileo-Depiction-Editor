@@ -16,7 +16,7 @@ function saveNewView(type) {
     switch (type) {
         case "DepictionHeaderView":
             // Title
-            let title = "Heading Text"
+            var title = "Heading Text"
             if (editUI.getElementsByClassName("titleField")[0].value != "") {
                 title = editUI.getElementsByClassName("titleField")[0].value
             }
@@ -26,6 +26,17 @@ function saveNewView(type) {
             view.useBoldText = editUI.getElementsByClassName("useBoldText")[0].checked
             view.alignment = editUI.getElementsByClassName("alignment")[0].value
             break;
+        case "DepictionSubheaderView":
+                // Title
+                var title = "Subheading Text"
+                if (editUI.getElementsByClassName("titleField")[0].value != "") {
+                    title = editUI.getElementsByClassName("titleField")[0].value
+                }
+                view.title = title
+                // Set other properties
+                view.useMargins = editUI.getElementsByClassName("useMargins")[0].checked
+                view.useBoldText = editUI.getElementsByClassName("useBoldText")[0].checked
+                break;
         default:
             throw("View is not yet supported")
     }

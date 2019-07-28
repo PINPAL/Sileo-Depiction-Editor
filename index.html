@@ -91,6 +91,10 @@
                         <div class="viewPreview" style="background-image: url('img/view-previews/DepictionLabelView.svg')"></div>
                         <h1>Label</h1>
                     </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionMarkdownView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionMarkdownView.svg')"></div>
+                        <h1>Markdown</h1>
+                    </div>
                 </div>
 
                 <!-- Edit DepictionHeaderView -->
@@ -122,11 +126,28 @@
                 </div>
 
                 <div id="editDepictionSubheaderView" style="display:none">
-                    
+                    <p>Subheaders are smaller headers.</p>
+                    <input placeholder="Subheading Text" type="text" class="titleField">
+                    <div class="optionWrapper">
+                        <label class="checkboxWrapper">
+                            Use Margins
+                            <input type="checkbox" class="useMargins" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="optionWrapper">
+                        <label class="checkboxWrapper">
+                            Bold Text
+                            <input type="checkbox" class="useBoldText" checked="checked" >
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
                 </div>
 
                 <div id="editDepictionLabelView" style="display:none">
-                    
+                </div>
+
+                <div id="editDepictionMarkdownView" style="display:none"> 
                 </div>
 
                 <div id="alertButton" style="display:none">Save Changes</div>
