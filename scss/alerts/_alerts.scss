@@ -90,7 +90,7 @@
         margin-top: 0;
         font-size: 16pt;
     }
-    * {
+    h1, h2, p, #alertButton, .alertError, .optionWrapper input, .checkmark, .tooltip, .optionWrapper, .alertContent, input[type=text] {
         margin: 8px auto;
         max-width: 600px;
         text-align: center;
@@ -144,6 +144,38 @@
         text-align: center !important;
     }
 
+    // Markdown Editor
+    #editDepictionMarkdownView {
+        * {
+            border: none !important;
+        }
+        .CodeMirror-cursor {
+            border-left: 1px solid var(--text-color) !important;
+        }
+        .editor-toolbar, .CodeMirror {
+            margin-top: 0;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.1);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 30px;
+            padding-right: 30px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .editor-toolbar {
+            height: 50px;
+            line-height: 0;
+            max-height: 50px;
+        }
+        .editor-toolbar a, .editor-toolbar:before  {
+            margin: 0 !important;
+        }
+        .CodeMirror {
+            margin-top: 10px;
+        }
+    }
+    
 
     // Form Elements 
     .optionWrapper {

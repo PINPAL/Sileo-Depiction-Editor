@@ -6,6 +6,7 @@
         <title id="websiteTitle">Depiction Editor</title>
         <link id="websiteIcon" rel="icon">
         <link rel='stylesheet' href='css/color-picker.css'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <link rel="stylesheet" href="https://pinpal.github.io/Sileo-Depiction-WebViews/global.css">
         <link rel="stylesheet" href="https://pinpal.github.io/Sileo-Depiction-WebViews/depiction.css">
         <link rel="stylesheet" href="css/main.css">
@@ -61,7 +62,7 @@
                 <h2 id="alertSubheader">Subheading</h1>
 
                 <!-- Edit Tabs -->
-                <div id="editTabsUI" style="display:none">
+                <div id="editTabsUI" style="display:none" class="alertContent">
                     <p>Tabs are separate screens that are made up of views. 
                         </br>They can be used to separate between more important data (such as a package’s name)
                         and other supplemental information (such as a changelog).</p>
@@ -71,14 +72,14 @@
                 </div>
 
                 <!-- Edit Banner Image -->
-                <div id="editBannerUI" style="display:none">
+                <div id="editBannerUI" style="display:none" class="alertContent">
                     <p>The URL of the image that should be displayed in the topmost header of the package page.</p>
                     <p>Support all basic image formats such as jpg/png.</p>
                     <input type="text" id="bannerUrlField" placeholder="https://the.location.of.your.image/image.png">
                 </div>
 
                 <!-- Edit Banner Image -->
-                <div id="addViewUI" style="display:none">
+                <div id="addViewUI" style="display:none" class="alertContent">
                     <div class="viewPreviewContainer" onClick="addView('DepictionHeaderView')">
                         <div class="viewPreview" style="background-image: url('img/view-previews/DepictionHeaderView.svg')"></div>
                         <h1>Heading</h1>
@@ -98,7 +99,7 @@
                 </div>
 
                 <!-- Edit DepictionHeaderView -->
-                <div id="editDepictionHeaderView" style="display:none">
+                <div id="editDepictionHeaderView" style="display:none" class="alertContent">
                     <p>Creates a large title intended for separating major sections of a given tab.</p>
                     <input placeholder="Heading Title" type="text" class="titleField">
                     <div class="optionWrapper">
@@ -129,7 +130,7 @@
                 </div>
 
                 <!-- Edit DepictionSubheaderView -->
-                <div id="editDepictionSubheaderView" style="display:none">
+                <div id="editDepictionSubheaderView" style="display:none" class="alertContent">
                     <p>Subheaders are smaller headers.</p>
                     <input placeholder="Subheading Title" type="text" class="titleField">
                     <div class="optionWrapper">
@@ -151,7 +152,7 @@
                 </div>
 
                 <!-- Edit DepictionlabelView -->
-                <div id="editDepictionLabelView" style="display:none">
+                <div id="editDepictionLabelView" style="display:none" class="alertContent">
                         <p>Labels are highly-customizable snippets of text with a customizable color.</p>
                         <input placeholder="Label Text" type="text" class="textField">
                         <div class="optionWrapper">
@@ -200,13 +201,19 @@
                         <input type="text" class="fontColor" placeholder="Font Color: #000000">
                 </div>
 
-                <div id="editDepictionMarkdownView" style="display:none"> 
+                <!-- Edit DepictionMarkdownView -->
+                <div id="editDepictionMarkdownView" style="display:none">
+                    <p>Allows for basic Markdown or HTML to be displayed, ideal for large blocks of text. 
+                        Learn more about markdown <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">here</a>.</p>
+
+                        <input id="markdownTextField">
                 </div>
 
                 <div id="alertButton" style="display:none">Save Changes</div>
             </div>
         </div>
     </body>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src='js/color-picker.js'></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown"></script>

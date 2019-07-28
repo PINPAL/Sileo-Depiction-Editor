@@ -9,6 +9,13 @@ function addView(type) {
     )
 }
 
+// Configure Markdown View Editor
+var simplemde = new SimpleMDE({
+    status: ["lines", "words"],
+    hideIcons: ["guide","fullscreen","side-by-side"],
+    element: document.getElementById("markdownTextField")
+})
+
 // Function called when user saves changes on addNewViewUI
 function saveNewView(type) {
     let view = {"class":type}
@@ -42,23 +49,27 @@ function saveNewView(type) {
             break;
         
         case "DepictionLabelView":
-                // Title
-                var text = "Label Text"
-                if (editUI.getElementsByClassName("textField")[0].value != "") {
-                    text = editUI.getElementsByClassName("textField")[0].value
-                }
-                view.text = text
-                // Set other properties
-                view.alignment = editUI.getElementsByClassName("alignment")[0].value
-                view.useMargins = editUI.getElementsByClassName("useMargins")[0].checked
-                view.usePadding = editUI.getElementsByClassName("usePadding")[0].checked
-                view.fontWeight = editUI.getElementsByClassName("fontWeight")[0].value
-                view.fontSize = editUI.getElementsByClassName("fontSize")[0].value
-                // Font color
-                if (editUI.getElementsByClassName("fontColor")[0].value != "") {
-                    view.textColor = editUI.getElementsByClassName("fontColor")[0].value
-                }
-                break;
+            // Title
+            var text = "Label Text"
+            if (editUI.getElementsByClassName("textField")[0].value != "") {
+                text = editUI.getElementsByClassName("textField")[0].value
+            }
+            view.text = text
+            // Set other properties
+            view.alignment = editUI.getElementsByClassName("alignment")[0].value
+            view.useMargins = editUI.getElementsByClassName("useMargins")[0].checked
+            view.usePadding = editUI.getElementsByClassName("usePadding")[0].checked
+            view.fontWeight = editUI.getElementsByClassName("fontWeight")[0].value
+            view.fontSize = editUI.getElementsByClassName("fontSize")[0].value
+            // Font color
+            if (editUI.getElementsByClassName("fontColor")[0].value != "") {
+                view.textColor = editUI.getElementsByClassName("fontColor")[0].value
+            }
+            break;
+        
+        case "DepictionMarkdownView":
+            view.markdown = simplemde.value()
+            break;
 
         default:
             throw("View is not yet supported")

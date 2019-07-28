@@ -1,0 +1,45 @@
+#alertWindow {
+    // Markdown Editor
+    #editDepictionMarkdownView {
+        max-width: 800px;
+        margin: 0 auto;
+
+        * {
+            border: none !important;
+        }
+        .CodeMirror-cursor {
+            border-left: 1px solid var(--text-color) !important;
+        }
+        .editor-toolbar, .CodeMirror, .editor-statusbar {
+            margin-top: 0;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.1);
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        .editor-toolbar, .editor-statusbar {
+            text-align: center;
+            height: 50px;
+            line-height: 0;
+            max-height: 50px;
+        }
+        .editor-statusbar {
+            padding: 0;
+            margin-top: 10px;
+            height: 50px;
+            line-height: 50px;
+            span {
+                text-transform: capitalize;
+                margin-top: 0;
+                font-size: 12pt;
+            }
+        }
+        .editor-toolbar a, .editor-toolbar:before  {
+            margin: 0 !important;
+        }
+        .CodeMirror {
+            padding: 20px;
+            margin-top: 10px;
+        }
+    }
+}

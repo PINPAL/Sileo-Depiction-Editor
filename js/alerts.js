@@ -38,7 +38,8 @@ function clearAlertContent() {
         "addViewUI",
         "editDepictionHeaderView",
         "editDepictionSubheaderView",
-        "editDepictionLabelView"
+        "editDepictionLabelView",
+        "editDepictionMarkdownView"
     ]
     for (i=0; i<hiddenIDs.length; i++) {
         document.getElementById(hiddenIDs[i]).style.display = "none"
