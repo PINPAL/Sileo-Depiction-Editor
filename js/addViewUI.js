@@ -71,6 +71,25 @@ function saveNewView(type) {
             view.markdown = simplemde.value()
             break;
 
+        case "DepictionImageView":
+            // Set Image URL
+            var imageURL = editUI.getElementsByClassName("urlField")[0].value
+            if (imageURL != "") {
+                if (validateImageURL(imageURL)) {
+                    view.URL = imageURL
+                } else {
+                    displayError("Invalid Image URL!")
+                }
+            } else {
+                displayError("Image URL cannot be blank!")
+            }
+            // Set other properties
+            view.width = editUI.getElementsByClassName("widthSlider")[0].value
+            view.height = editUI.getElementsByClassName("widthSlider")[0].value
+            view.cornerRadius = editUI.getElementsByClassName("cornerRadiusSlider")[0].value
+            view.alignment = editUI.getElementsByClassName("alignment")[0].value
+            break;
+
         default:
             throw("View is not yet supported")
     }

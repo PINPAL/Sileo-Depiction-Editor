@@ -6,7 +6,7 @@ function saveBanner() {
     // If not blank
     if (document.getElementById("bannerUrlField").value != "") {
         // URL validation
-        if (document.getElementById("bannerUrlField").value.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
+        if (validateImageURL(document.getElementById("bannerUrlField").value)) {
             // Overrite config with new header image
             config.headerImage = document.getElementById("bannerUrlField").value
             // Re-render Preview

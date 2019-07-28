@@ -337,28 +337,6 @@
     margin-right: 6px !important;
     margin-top: 8px !important;
     text-align: center !important; }
-  #alertWindow #editDepictionMarkdownView * {
-    border: none !important; }
-  #alertWindow #editDepictionMarkdownView .CodeMirror-cursor {
-    border-left: 1px solid var(--text-color) !important; }
-  #alertWindow #editDepictionMarkdownView .editor-toolbar, #alertWindow #editDepictionMarkdownView .CodeMirror {
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-    box-sizing: border-box;
-    border-radius: 10px; }
-  #alertWindow #editDepictionMarkdownView .editor-toolbar {
-    height: 50px;
-    line-height: 0;
-    max-height: 50px; }
-  #alertWindow #editDepictionMarkdownView .editor-toolbar a, #alertWindow #editDepictionMarkdownView .editor-toolbar:before {
-    margin: 0 !important; }
-  #alertWindow #editDepictionMarkdownView .CodeMirror {
-    margin-top: 10px; }
   #alertWindow .optionWrapper {
     position: relative;
     height: 50px;

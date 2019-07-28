@@ -96,6 +96,14 @@
                         <div class="viewPreview" style="background-image: url('img/view-previews/DepictionMarkdownView.svg')"></div>
                         <h1>Markdown</h1>
                     </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionImageView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionImageView.svg')"></div>
+                        <h1>Image</h1>
+                    </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionTableButtonView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionTableButtonView.svg')"></div>
+                        <h1>Table Button</h1>
+                    </div>
                 </div>
 
                 <!-- Edit DepictionHeaderView -->
@@ -205,9 +213,52 @@
                 <div id="editDepictionMarkdownView" style="display:none">
                     <p>Allows for basic Markdown or HTML to be displayed, ideal for large blocks of text. 
                         Learn more about markdown <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">here</a>.</p>
-
                         <input id="markdownTextField">
                 </div>
+
+                <!-- Edit Banner Image -->
+                <div id="editDepictionImageView" style="display:none" class="alertContent">
+                    <p>Renders an image inside the depiction. Recommended for use in displaying logos or other small images NOT screenshots.</p>
+                    <p>Supports all basic image formats such as jpg/png.</p>
+                    <input type="text" class="urlField" placeholder="https://the.location.of.your.image/image.png">
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the width of the image.</div>
+                        Width
+                        <input type="number" class="widthSlider" min="1" max="200" value=40> px
+                    </div>
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the height of the image.</div>
+                        Height
+                        <input type="number" class="heightSlider" min="1" max="200" value=40> px
+                    </div>
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the corner roundness of the image.</div>
+                        Corner Radius
+                        <input type="number" class="cornerRadiusSlider" min="0" max="100" value=5>
+                    </div>
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the horizontal position of the image within the view.</div>
+                        Image Alignment
+                        <select class="alignment">
+                            <option value="0">Left</option>
+                            <option value="1" selected>Center</option>
+                            <option value="2">Right</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Edit Banner Image -->
+                <div id="editDepictionTableButtonView" style="display:none" class="alertContent">
+                    <p>Adds a table cell that opens a given URL or performs another action when tapped.</p>
+                    <input type="text" class="urlField" placeholder="https://the.location.of.your.link.com">
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the padding (white space) above and below the table cell.</div>
+                        Vertical Padding
+                        <input type="number" class="widthSlider" min="0" max="100" value=11> px
+                        <input type="text" class="fontColor" placeholder="Tint Color: #000000">
+                    </div>
+                </div>
+                
 
                 <div id="alertButton" style="display:none">Save Changes</div>
             </div>

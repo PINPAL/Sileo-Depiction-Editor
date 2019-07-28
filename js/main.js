@@ -159,6 +159,14 @@ function editTabs() {
     )
 }
 
+// Function to validate image URL
+function validateImageURL(imageURL) {
+    if (imageURL.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
+        return true
+    }
+    return false
+}
+
 // Function called when user clicks "Toggle Edit UI"
 function toggleEditUI() {
     document.getElementsByTagName("body")[0].classList.toggle("hideEditUI")
