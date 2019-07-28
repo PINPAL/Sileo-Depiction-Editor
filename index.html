@@ -95,7 +95,30 @@
 
                 <!-- Edit DepictionHeaderView -->
                 <div id="editDepictionHeaderView" style="display:none">
-                    <input placeholder="Heading Text" type="text">
+                    <p>Creates a large title intended for separating major sections of a given tab.</p>
+                    <input placeholder="Heading Text" type="text" class="titleField">
+                    <div class="optionWrapper">
+                        <label class="checkboxWrapper">
+                            Use Margins
+                            <input type="checkbox" class="useMargins" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="optionWrapper">
+                        <label class="checkboxWrapper">
+                            Bold Text
+                            <input type="checkbox" class="useBoldText" checked="checked" >
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="optionWrapper">
+                        Text Alignment
+                        <select class="alignment">
+                            <option value="0">Left</option>
+                            <option value="1">Center</option>
+                            <option value="2">Right</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div id="editDepictionSubheaderView" style="display:none">
