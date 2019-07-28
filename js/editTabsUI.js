@@ -42,11 +42,14 @@ function updateTabEditUI() {
 
 // Function called when user clicks "Delete Tab" on EditTabsUI
 function deleteTab(element) {
-    // Find which tab index user is deleting
-    let node = element
-    for (var i=0; (node=node.previousSibling); i++);
     // Delete Tab
-    config.tabs.splice(i-1, 1)
+    config.tabs.splice(
+        indexInClass(element), // Find which tab index user is deleting
+        1 // Delete just one
+    )
+    // Delete Tab Editor Cell
+    // need to delete parent so have to go up 2 parents first (ffs js why no easy delete element function)
+    element.parentNode.parentNode.removeChild(element.parentNode)
     // Refresh UI
     updateTabEditUI()
 }

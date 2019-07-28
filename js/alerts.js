@@ -26,6 +26,7 @@ function hideAlert() {
     document.getElementsByTagName("body")[0].classList.remove("alertVisible")
     document.getElementById("editTabsUI").style.display = "none"
     document.getElementById("editBannerUI").style.display = "none"
+    document.getElementById("addViewUI").style.display = "none"
 }
 
 // Function to create an alert
@@ -35,7 +36,7 @@ function createAlert(headerString,subheaderString,contentType,saveEvent) {
     document.getElementById("alertButton").setAttribute("onClick",saveEvent)
     if (contentType == "editTabUI") {
         // Show correct content
-        document.getElementById("editTabsUI").style.display = "inline"
+        document.getElementById("editTabsUI").style.display = "block"
         // Create Tab List
         updateTabEditUI()
     } else if (contentType == "editImageUI") {
@@ -44,7 +45,10 @@ function createAlert(headerString,subheaderString,contentType,saveEvent) {
             document.getElementById("bannerUrlField").setAttribute("placeholder",config.headerImage)
         }
         // Show correct content
-        document.getElementById("editBannerUI").style.display = "inline"
+        document.getElementById("editBannerUI").style.display = "block"
+    } else if (contentType == "addViewUI") {
+        // Show correct content
+        document.getElementById("addViewUI").style.display = "block"
     } else {
         document.getElementById("alertContent").innerHTML = contentType
     }

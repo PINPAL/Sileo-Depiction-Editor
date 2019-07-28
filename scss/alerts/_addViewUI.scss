@@ -1,0 +1,40 @@
+#addViewUI {
+    max-width: 100%;
+    margin-top: 30px;
+    text-align: center;
+
+    //View Preview Boxes
+    .viewPreviewContainer {
+        border-radius: 10px;
+        padding: 8px;
+        display: inline-block;
+        margin: 4px;
+        border-width: 2px;
+        border-style: dashed;
+        border-color: rgba(0,0,0,0);
+
+        &:hover {
+            border-color: var(--tint-color);
+
+            h1 {
+                color: var(--tint-color);
+                font-weight: bold;
+            }
+        }
+
+        h1 {
+            margin-top: 10px;
+            font-size: 12pt;
+            font-weight: var(--semi-bold);
+        }
+
+        .viewPreview {
+            border-radius: 5px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 240px;
+            height: 140px;
+        }
+    }
+}
