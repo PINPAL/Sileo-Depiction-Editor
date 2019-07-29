@@ -295,7 +295,7 @@
   #alertWindow #alertSubheader {
     margin-top: 0;
     font-size: 16pt; }
-  #alertWindow h1, #alertWindow h2, #alertWindow p, #alertWindow #alertButton, #alertWindow .alertError, #alertWindow .optionWrapper input, #alertWindow .checkmark, #alertWindow .tooltip, #alertWindow .optionWrapper, #alertWindow .alertContent, #alertWindow input[type=text] {
+  #alertWindow h1, #alertWindow h2, #alertWindow h3, #alertWindow p, #alertWindow #alertButton, #alertWindow .alertError, #alertWindow .optionWrapper input, #alertWindow .checkmark, #alertWindow .tooltip, #alertWindow .optionWrapper, #alertWindow .alertContent, #alertWindow input[type=text], #alertWindow .tabEditorCell {
     margin: 8px auto;
     max-width: 600px;
     text-align: center; }
@@ -432,12 +432,14 @@
   height: 50px; }
 
 #editTabsUI input {
+  margin: 0 !important;
   width: calc(100% - 60px) !important;
   float: left; }
 
 #editTabsUI #addTabButton {
+  margin: 20px auto;
+  text-align: center;
   cursor: pointer;
-  margin-top: 40px;
   width: calc(100% - 100px);
   font-size: 12pt;
   background-color: var(--darker-ui-color);
