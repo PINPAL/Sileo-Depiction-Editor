@@ -42,7 +42,7 @@
 /* Edit Image Buttons */
 .editButton {
     opacity: 0;
-    background-size: 35px;
+    mask-size: 35px;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url(../img/edit.svg);
@@ -106,12 +106,9 @@
 
 // Add View Button
 .addViewButton {
+    position: relative;
     opacity: 0.4;
     cursor: pointer;
-    background-size: 18px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../img/add.svg);
     margin: 10px auto;
     width: calc(100% - 15px);
     height: 30px;
@@ -119,15 +116,43 @@
     border-color: rgba(0,0,0,0);
     border-width: 2px;
     border-style: dashed;
-    transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-    -webkit-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-    -moz-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-    -o-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-    -ms-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
+    transition: height 0.3s ease, border-color 0.3s ease;
+    -webkit-transition: height 0.3s ease, border-color 0.3s ease;
+    -moz-transition: height 0.3s ease, border-color 0.3s ease;
+    -o-transition: height 0.3s ease, border-color 0.3s ease;
+    -ms-transition: height 0.3s ease, border-color 0.3s ease;
+
+    div {
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 18px;
+        height: 18px;
+        background-color: var(--text-color);
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-position: center;
+        mask-image: url(../img/add.svg);
+        -webkit-mask-image: url(../img/add.svg);
+        transition: width 0.3s ease, height 0.3s ease;
+        // -webkit-transition: mask-size 0.3s ease;
+        // -moz-transition: mask-size 0.3s ease;
+        // -o-transition: mask-size 0.3s ease;
+        // -ms-transition: mask-size 0.3s ease;
+    }
 }
 .addViewButton:hover {
-    background-size: 25px;
     opacity: 1;
     border-color: var(--tint-color);
     height: 100px;
+
+    div {
+        background-color: var(--tint-color);
+        width: 25px;
+        height: 25px;
+    }
 }

@@ -1,6 +1,7 @@
 #addViewUI {
     max-width: 100% !important;
     margin-top: 30px !important;
+    
 
     //View Preview Boxes
     .viewPreviewContainer {
@@ -24,6 +25,10 @@
                 color: var(--tint-color);
                 font-weight: bold;
             }
+
+            svg .bg {
+                opacity: 0;
+            }
         }
 
         h1 {
@@ -32,13 +37,67 @@
             font-weight: var(--semi-bold);
         }
 
-        .viewPreview {
-            border-radius: 9px;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+        // For Styling SVG Preview Image
+        svg {
+            border-radius: 12px;
             width: 240px;
             height: 140px;
+
+            .bg {
+                fill: var(--addViewUI-preview-bg);
+            }
+            .box {
+                fill: var(--addViewUI-preview-box);
+            }
+            .heading, .subheading, .text {
+                fill:var(--text-color);
+            }
+            .heading {
+                opacity: .65;
+            }
+            .subheading {
+                opacity: .35;
+            }
+            .text {
+                opacity: .15;
+            }
+            .tintText {
+                fill: var(--tint-color);
+                stroke: var(--tint-color);
+            }
+            .ultralight {
+                stroke :var(--text-color);
+                opacity: .1;
+                stroke-width:2;
+                stroke-linecap:round;
+                stroke-miterlimit:10;
+            }
+        }
+        #imageViewPreview {
+            .st1{fill:#BDDAE5;}
+            .st2{fill:#3DB39E;}
+            .st3{fill:#4BC2AD;}
+            .st4{fill:#3ED6B9;}
+            .st6{fill:#E8C377;}
+        }
+        #screenshotsViewPreview {
+            .st2{fill:#BDDAE5;}
+            .st3{fill:#E8C377;}
+            .st4{clip-path:url(#SVGID_4_);fill:#3DB39E;}
+            .st5{clip-path:url(#SVGID_4_);fill:#4BC2AD;}
+            .st6{fill:#89858E;}
+            .st7{fill:#E8DFCF;}
+            .st8{fill:#90C1D1;}
+            .st9{fill:#EDD983;}
+            .st10{clip-path:url(#SVGID_5_);fill:#3DB39E;}
+            .st11{clip-path:url(#SVGID_5_);fill:#4BC2AD;}
+            .st12{clip-path:url(#SVGID_7_);}
+            .st13{fill:#74BDCE;}
+            .st14{clip-path:url(#SVGID_8_);fill:#549662;}
+            .st15{clip-path:url(#SVGID_8_);fill:#43897C;}
+            .st16{clip-path:url(#SVGID_7_);fill:#DCE1E2;}
+            .st17{clip-path:url(#SVGID_7_);fill:#EDEDED;}
+            .st18{clip-path:url(#SVGID_10_);fill:#4F5D73;}
         }
     }
 }

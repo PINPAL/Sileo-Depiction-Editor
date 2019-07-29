@@ -38,7 +38,7 @@
 /* Edit Image Buttons */
 .editButton {
   opacity: 0;
-  background-size: 35px;
+  mask-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(../img/edit.svg);
@@ -98,12 +98,9 @@
   padding-left: 15px; }
 
 .addViewButton {
+  position: relative;
   opacity: 0.4;
   cursor: pointer;
-  background-size: 18px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url(../img/add.svg);
   margin: 10px auto;
   width: calc(100% - 15px);
   height: 30px;
@@ -111,17 +108,37 @@
   border-color: rgba(0, 0, 0, 0);
   border-width: 2px;
   border-style: dashed;
-  transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-  -webkit-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-  -moz-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-  -o-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease;
-  -ms-transition: height 0.3s ease, border-color 0.3s ease, background-size 0.3s ease; }
+  transition: height 0.3s ease, border-color 0.3s ease;
+  -webkit-transition: height 0.3s ease, border-color 0.3s ease;
+  -moz-transition: height 0.3s ease, border-color 0.3s ease;
+  -o-transition: height 0.3s ease, border-color 0.3s ease;
+  -ms-transition: height 0.3s ease, border-color 0.3s ease; }
+  .addViewButton div {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    background-color: var(--text-color);
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-image: url(../img/add.svg);
+    -webkit-mask-image: url(../img/add.svg);
+    transition: width 0.3s ease, height 0.3s ease; }
 
 .addViewButton:hover {
-  background-size: 25px;
   opacity: 1;
   border-color: var(--tint-color);
   height: 100px; }
+  .addViewButton:hover div {
+    background-color: var(--tint-color);
+    width: 25px;
+    height: 25px; }
 
 #realPageNavbar {
   background-color: #292c30;
@@ -172,7 +189,7 @@
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   border-style: solid;
   border-width: 1px;
-  border-color: #dfdfdf;
+  border-color: var(--editor-border-color);
   border-radius: 15px;
   padding: 20px;
   box-sizing: border-box;
@@ -213,9 +230,6 @@
       margin-top: 5px;
       margin-bottom: 10px; }
     #sidebar .settingsCell input {
-      padding-top: 9px;
-      padding-bottom: 9px;
-      border-radius: 10px;
       background-color: rgba(0, 0, 0, 0.15);
       float: left; }
     #sidebar .settingsCell .colorPreview {
@@ -331,10 +345,6 @@
     padding-bottom: 5px;
     background-color: #ed4040;
     color: white; }
-  #alertWindow input[type=text] {
-    height: 50px;
-    width: calc(100% - 25px);
-    box-sizing: border-box; }
   #alertWindow .optionWrapper {
     position: relative;
     height: 50px;
@@ -487,17 +497,90 @@
       #addViewUI .viewPreviewContainer:hover h1 {
         color: var(--tint-color);
         font-weight: bold; }
+      #addViewUI .viewPreviewContainer:hover svg .bg {
+        opacity: 0; }
     #addViewUI .viewPreviewContainer h1 {
       margin-top: 10px;
       font-size: 12pt;
       font-weight: var(--semi-bold); }
-    #addViewUI .viewPreviewContainer .viewPreview {
-      border-radius: 9px;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+    #addViewUI .viewPreviewContainer svg {
+      border-radius: 12px;
       width: 240px;
       height: 140px; }
+      #addViewUI .viewPreviewContainer svg .bg {
+        fill: var(--addViewUI-preview-bg); }
+      #addViewUI .viewPreviewContainer svg .box {
+        fill: var(--addViewUI-preview-box); }
+      #addViewUI .viewPreviewContainer svg .heading, #addViewUI .viewPreviewContainer svg .subheading, #addViewUI .viewPreviewContainer svg .text {
+        fill: var(--text-color); }
+      #addViewUI .viewPreviewContainer svg .heading {
+        opacity: .65; }
+      #addViewUI .viewPreviewContainer svg .subheading {
+        opacity: .35; }
+      #addViewUI .viewPreviewContainer svg .text {
+        opacity: .15; }
+      #addViewUI .viewPreviewContainer svg .tintText {
+        fill: var(--tint-color);
+        stroke: var(--tint-color); }
+      #addViewUI .viewPreviewContainer svg .ultralight {
+        stroke: var(--text-color);
+        opacity: .1;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-miterlimit: 10; }
+    #addViewUI .viewPreviewContainer #imageViewPreview .st1 {
+      fill: #BDDAE5; }
+    #addViewUI .viewPreviewContainer #imageViewPreview .st2 {
+      fill: #3DB39E; }
+    #addViewUI .viewPreviewContainer #imageViewPreview .st3 {
+      fill: #4BC2AD; }
+    #addViewUI .viewPreviewContainer #imageViewPreview .st4 {
+      fill: #3ED6B9; }
+    #addViewUI .viewPreviewContainer #imageViewPreview .st6 {
+      fill: #E8C377; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st2 {
+      fill: #BDDAE5; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st3 {
+      fill: #E8C377; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st4 {
+      clip-path: url(#SVGID_4_);
+      fill: #3DB39E; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st5 {
+      clip-path: url(#SVGID_4_);
+      fill: #4BC2AD; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st6 {
+      fill: #89858E; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st7 {
+      fill: #E8DFCF; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st8 {
+      fill: #90C1D1; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st9 {
+      fill: #EDD983; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st10 {
+      clip-path: url(#SVGID_5_);
+      fill: #3DB39E; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st11 {
+      clip-path: url(#SVGID_5_);
+      fill: #4BC2AD; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st12 {
+      clip-path: url(#SVGID_7_); }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st13 {
+      fill: #74BDCE; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st14 {
+      clip-path: url(#SVGID_8_);
+      fill: #549662; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st15 {
+      clip-path: url(#SVGID_8_);
+      fill: #43897C; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st16 {
+      clip-path: url(#SVGID_7_);
+      fill: #DCE1E2; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st17 {
+      clip-path: url(#SVGID_7_);
+      fill: #EDEDED; }
+    #addViewUI .viewPreviewContainer #screenshotsViewPreview .st18 {
+      clip-path: url(#SVGID_10_);
+      fill: #4F5D73; }
 
 #alertWindow #editDepictionMarkdownView {
   max-width: 800px;
@@ -542,7 +625,19 @@ html {
   --body-bg-color: #f8f9fa;
   --dark-ui-color: rgba(0,0,0,.1);
   --darker-ui-color: rgba(0,0,0,.2);
-  --sidebarTableCellBg: rgba(0,0,0,.03); }
+  --sidebarTableCellBg: rgba(0,0,0,.03);
+  --editor-border-color: rgb(223, 223, 223);
+  --addViewUI-preview-bg: #EDEDED;
+  --addViewUI-preview-box: #FFFFFF; }
+
+.darkMode {
+  --body-bg-color: #1e1e1f;
+  --dark-ui-color: rgba(0,0,0,.2);
+  --darker-ui-color: rgba(0,0,0,.4);
+  --sidebarTableCellBg: rgba(0,0,0,.08);
+  --editor-border-color: #262629;
+  --addViewUI-preview-bg: #1e1e1f;
+  --addViewUI-preview-box: #383838; }
 
 body {
   background-color: var(--body-bg-color); }

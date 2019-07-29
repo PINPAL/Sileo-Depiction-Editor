@@ -14,6 +14,20 @@ html {
     --dark-ui-color: rgba(0,0,0,.1);
     --darker-ui-color: rgba(0,0,0,.2);
     --sidebarTableCellBg: rgba(0,0,0,.03);
+    --editor-border-color: rgb(223, 223, 223);
+
+    --addViewUI-preview-bg: #EDEDED;
+    --addViewUI-preview-box: #FFFFFF;
+}
+.darkMode {
+    --body-bg-color: #1e1e1f;
+    --dark-ui-color: rgba(0,0,0,.2);
+    --darker-ui-color: rgba(0,0,0,.4);
+    --sidebarTableCellBg: rgba(0,0,0,.08);
+    --editor-border-color: #262629;
+
+    --addViewUI-preview-bg: #1e1e1f;
+    --addViewUI-preview-box: #383838;
 }
 
 body {
