@@ -43,7 +43,8 @@ function clearAlertContent() {
         "editDepictionImageView",
         "editDepictionScreenshotsView",
         "editDepictionTableTextView",
-        "editDepictionTableButtonView"
+        "editDepictionTableButtonView",
+        "editDepictionSpacerView"
     ]
     for (i=0; i<hiddenIDs.length; i++) {
         document.getElementById(hiddenIDs[i]).style.display = "none"
