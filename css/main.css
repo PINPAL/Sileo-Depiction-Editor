@@ -276,6 +276,8 @@
   -ms-transition: opacity 0.35s ease; }
 
 #alertWindow {
+  max-height: calc(100% - 130px);
+  overflow-y: scroll;
   width: calc(100% - 20px);
   max-width: 1000px;
   border-radius: 15px;
@@ -283,7 +285,7 @@
   box-sizing: border-box;
   background-color: var(--bg-color);
   position: absolute;
-  top: 50%;
+  top: calc(50% + 37px);
   left: 50%;
   transform: translate(-50%, -50%); }
   #alertWindow #alertHeader {
@@ -327,16 +329,6 @@
     height: 50px;
     width: calc(100% - 25px);
     box-sizing: border-box; }
-  #alertWindow .fontColor {
-    padding: 0 20px !important;
-    width: calc(50% - 20px) !important;
-    position: relative !important;
-    display: inline-block !important;
-    margin-bottom: 12px !important;
-    margin-left: 6px !important;
-    margin-right: 6px !important;
-    margin-top: 8px !important;
-    text-align: center !important; }
   #alertWindow .optionWrapper {
     position: relative;
     height: 50px;
@@ -357,6 +349,11 @@
     -moz-transition: border-color 0.25s ease, border-radius 0.15s ease;
     -o-transition: border-color 0.25s ease, border-radius 0.15s ease;
     -ms-transition: border-color 0.25s ease, border-radius 0.15s ease; }
+    #alertWindow .optionWrapper input[type=text] {
+      background: none !important;
+      width: 100% !important;
+      height: 100% !important;
+      margin-top: 0 !important; }
     #alertWindow .optionWrapper .tooltip {
       color: white;
       width: calc(100% + 4px);
@@ -550,7 +547,7 @@ input[type=text] {
   background-color: rgba(0, 0, 0, 0.1);
   outline: none !important;
   display: block;
-  text-align: left !important;
+  text-align: left;
   box-shadow: none;
   border: none;
   padding-top: 10px;

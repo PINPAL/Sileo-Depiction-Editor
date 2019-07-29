@@ -100,16 +100,35 @@
                         <div class="viewPreview" style="background-image: url('img/view-previews/DepictionImageView.svg')"></div>
                         <h1>Image</h1>
                     </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionScreenshotsView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionScreenshotsView.svg')"></div>
+                        <h1>Screenshots</h1>
+                    </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionTableTextView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionTableTextView.svg')"></div>
+                        <h1>Table Text</h1>
+                    </div>
                     <div class="viewPreviewContainer" onClick="addView('DepictionTableButtonView')">
                         <div class="viewPreview" style="background-image: url('img/view-previews/DepictionTableButtonView.svg')"></div>
                         <h1>Table Button</h1>
+                    </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionSeparatorView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionSeperatorView.svg')"></div>
+                        <h1>Separator</h1>
+                    </div>
+                    <div class="viewPreviewContainer" onClick="addView('DepictionSpacerView')">
+                        <div class="viewPreview" style="background-image: url('img/view-previews/DepictionSpacerView.svg')"></div>
+                        <h1>Spacer</h1>
                     </div>
                 </div>
 
                 <!-- Edit DepictionHeaderView -->
                 <div id="editDepictionHeaderView" style="display:none" class="alertContent">
                     <p>Creates a large title intended for separating major sections of a given tab.</p>
-                    <input placeholder="Heading Title" type="text" class="titleField">
+                    <div class="optionWrapper" style="width: calc(100% - 40px)">
+                        <div class="tooltip">The title text displayed within the header.</div>
+                        <input placeholder="Heading Title" type="text" class="titleField">
+                    </div>
                     <div class="optionWrapper">
                         <div class="tooltip">Allow margins (white space) above & below the heading.</div>
                         <label class="checkboxWrapper">
@@ -140,7 +159,10 @@
                 <!-- Edit DepictionSubheaderView -->
                 <div id="editDepictionSubheaderView" style="display:none" class="alertContent">
                     <p>Subheaders are smaller headers.</p>
-                    <input placeholder="Subheading Title" type="text" class="titleField">
+                    <div class="optionWrapper" style="width: calc(100% - 40px)">
+                        <div class="tooltip">The title text displayed within the subheader.</div>
+                        <input placeholder="Subheading Title" type="text" class="titleField">
+                    </div>
                     <div class="optionWrapper">
                         <div class="tooltip">Allow margins (white space) above & below the subheading.</div>
                         <label class="checkboxWrapper">
@@ -206,7 +228,10 @@
                             Font Size
                             <input type="number" class="fontSize" min="0" max="40" value=12>pt
                         </div>
-                        <input type="text" class="fontColor" placeholder="Font Color: #000000">
+                        <div class="optionWrapper">
+                            <div class="tooltip">Change the color of the label text.</div>
+                            <input placeholder="#000000" type="text" class="fontColor">
+                        </div>
                 </div>
 
                 <!-- Edit DepictionMarkdownView -->
@@ -216,11 +241,14 @@
                         <input id="markdownTextField">
                 </div>
 
-                <!-- Edit Banner Image -->
+                <!-- Edit DepictionImageView -->
                 <div id="editDepictionImageView" style="display:none" class="alertContent">
                     <p>Renders an image inside the depiction. Recommended for use in displaying logos or other small images NOT screenshots.</p>
                     <p>Supports all basic image formats such as jpg/png.</p>
-                    <input type="text" class="urlField" placeholder="https://the.location.of.your.image/image.png">
+                    <div class="optionWrapper" style="width: calc(100% - 40px)">
+                        <div class="tooltip">The URL of the image you want to show.</div>
+                        <input placeholder="https://the.location.of.your.image/image.png" type="text" class="urlField">
+                    </div>
                     <div class="optionWrapper">
                         <div class="tooltip">Change the width of the image.</div>
                         Width
@@ -247,19 +275,49 @@
                     </div>
                 </div>
 
-                <!-- Edit Banner Image -->
+                <!-- Edit DepictionScreenshotsView -->
+                <div id="editDepictionScreenshotsView" style="display:none" class="alertContent">
+                    <p>Displays a screenshot carousel with provided images.</p>
+                </div>
+
+                <!-- Edit DepictionTableTextView -->
+                <div id="editDepictionTableTextView" style="display:none" class="alertContent">
+                    <p>Adds a table cell with a given value that is ideal for displaying the current version or release date of a tweak.</p>
+                    <div class="optionWrapper" style="width: calc(100% - 40px)">
+                        <div class="tooltip">The title of the row. (Left Side of Table)</div>
+                        <input placeholder="Table Title" type="text" class="titleField">
+                    </div>
+                    <div class="optionWrapper" style="width: calc(100% - 40px)">
+                        <div class="tooltip">The text to be displayed next to the title. (Right Side of Table)</div>
+                        <input placeholder="Table Title" type="text" class="textField">
+                    </div>
+                </div>
+
+                <!-- Edit DepictionTableButtonView -->
                 <div id="editDepictionTableButtonView" style="display:none" class="alertContent">
                     <p>Adds a table cell that opens a given URL or performs another action when tapped.</p>
                     <input type="text" class="urlField" placeholder="https://the.location.of.your.link.com">
-                    <h1> dis menu is all fucked sorry bout dat</h1>
+                    <input placeholder="Button Text" type="text" class="textField">
                     <div class="optionWrapper">
                         <div class="tooltip">Change the padding (white space) above and below the table cell.</div>
                         Vertical Padding
-                        <input type="number" class="widthSlider" min="0" max="100" value=11> px
-                        <input type="text" class="fontColor" placeholder="Tint Color: #000000">
+                        <input type="number" class="yPadding" min="0" max="100" value=11> px
+                    </div>
+                    <div class="optionWrapper">
+                        <div class="tooltip">Change the color of the button text.</div>
+                        <input placeholder="#000000" type="text" class="tableTintColorPicker">
                     </div>
                 </div>
-                
+
+                <!-- Edit DepictionSpacerView -->
+                <div id="editDepictionSpacerView" style="display:none" class="alertContent">
+                    <p>Adds a blank space of variable height.</p>
+                    <div class="optionWrapper">
+                        <div class="tooltip">Determine how tall the spacer should be.</div>
+                        Vertical Height
+                        <input type="number" class="spacing" min="0" max="1000" value=20>
+                    </div>
+                </div>
 
                 <div id="alertButton" style="display:none">Save Changes</div>
             </div>

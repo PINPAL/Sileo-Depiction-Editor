@@ -1,12 +1,16 @@
 // Function called when user picks a view to add
 function addView(type) {
     let typeName = type.replace(/(Depiction)|(View)/g,"")
-    switchAlertPage(
-        "Edit " + typeName,
-        "Customize " + typeName + " Content",
-        "edit" + type,
-        "saveNewView('" + type + "')"
-    )
+    if (typeName == "Separator") {
+        saveNewView("DepictionSeparatorView")
+    } else {
+        switchAlertPage(
+            "Edit " + typeName,
+            "Customize " + typeName + " Content",
+            "edit" + type,
+            "saveNewView('" + type + "')"
+        )
+    }
 }
 
 // Configure Markdown View Editor
@@ -88,6 +92,50 @@ function saveNewView(type) {
             view.height = editUI.getElementsByClassName("widthSlider")[0].value
             view.cornerRadius = editUI.getElementsByClassName("cornerRadiusSlider")[0].value
             view.alignment = editUI.getElementsByClassName("alignment")[0].value
+            break;
+        
+        case "DepictionTableTextView":
+            // Set Title
+            var title = "Table Title"
+            if (editUI.getElementsByClassName("titleField")[0].value != "") {
+                title = editUI.getElementsByClassName("titleField")[0].value
+            }
+            view.title = title
+            // Set Text
+            var text = "Table Text"
+            if (editUI.getElementsByClassName("textField")[0].value != "") {
+                text = editUI.getElementsByClassName("textField")[0].value
+            }
+            view.text = text
+            break;
+
+        case "DepictionTableButtonView":
+            // Set Action URL
+            var buttonURL = editUI.getElementsByClassName("textField")[0].value
+            if (buttonURL != "") {
+                    view.action = buttonURL
+            } else {
+                displayError("Action URL cannot be blank!")
+            }
+            // Set Text
+            var title = "Button Text"
+            if (editUI.getElementsByClassName("textField")[0].value != "") {
+                title = editUI.getElementsByClassName("textField")[0].value
+            }
+            view.title = title
+            // Set other properties
+            view.yPadding = editUI.getElementsByClassName("yPadding")[0].value
+            // Tint color
+            if (editUI.getElementsByClassName("tableTintColorPicker")[0].value != "") {
+                view.tintColor = editUI.getElementsByClassName("tableTintColorPicker")[0].value
+            }
+            break;
+
+        case "DepictionSeparatorView":
+            break;
+
+        case "DepictionSpacerView":
+            view.spacing = editUI.getElementsByClassName("spacing")[0].value
             break;
 
         default:

@@ -41,6 +41,8 @@ function clearAlertContent() {
         "editDepictionLabelView",
         "editDepictionMarkdownView",
         "editDepictionImageView",
+        "editDepictionScreenshotsView",
+        "editDepictionTableTextView",
         "editDepictionTableButtonView"
     ]
     for (i=0; i<hiddenIDs.length; i++) {
