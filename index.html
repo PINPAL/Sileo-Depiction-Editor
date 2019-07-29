@@ -12,68 +12,71 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <div id="realPageNavbar">
-            <div>
-                <span class="realLeftNav">Sileo Depiction Editor</span>
-                <span class="realRightNav" onClick="toggleEditUI()">Toggle Edit UI</span>
-                <span class="realRightNav" onClick="toggleDarkMode()">Toggle Dark Mode</span>
-            </div>
-        </div>
+        
         <div id="everythingWrapper">
-            <div id="sidebar">
-                    <h1>Configure</h1>
-                    <div class="settingsCell" id="sidebarColorPicker">
-                        <h3>Tint Colour</h3>
-                        <p>Color that acts as the packages main accent.</p>
-                        <input type='text' placeholder="#2cb1be"/>
-                        <div class="colorPreview" style="background-color: #2cb1be;">h</div>
-                    </div>
-                    <button onClick="downloadConfig()">Download Depiction</button>
-                </div>
-                
-                <div class="navbar">
-                    <div class="leftNavButton">
-                        <a class="backURL">
-                            <div class="backArrow"></div>Back
-                        </a>
-                    </div>
-                    <div class="changedNavbarItems">
-                        <div id="navbarTweakIcon" style="background-image: url('https://pinpal.github.io/Sileo-Depiction-WebViews/assets/categories/Tweaks.png')"></div>
-                        <div class="rightNavButton">
-                            <div class="priceButton" onclick="modifyButton()">Price</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div id="previewBox">
-        
-                    <div id="bannerWrapper" class="editableImage" onClick="editImage('bannerImage')">
-                        <div id="bannerImage"></div>
-                        <div class="editButton editUI"></div>
-                    </div>
-        
-                    <div class="headerSection">
-                        <div id="tweakIcon" style='background-image: url("https://pinpal.github.io/Sileo-Depiction-WebViews/assets/categories/Tweaks.png")'></div>
-                        <h1 id="tweakName">Tweak Name</h1>
-                        <h4 id="developerName">Developer</h4>
-                        <div class="priceButton">Price</div>
-                    </div>
-        
-                    <div class="headerPillSelector" style="visibility: hidden;">
-                        <div id="pillSelectors"></div>
-                        <div class="pillSelectorLine"></div>
-                        <div id="editTabsButton" class="editUI" onClick="editTabs()">Edit Tabs</div>
-                    </div>
-        
-                    <div id="mainWrapper"></div>
+            <div id="realPageNavbar">
+                <div>
+                    <span class="realLeftNav">Sileo Depiction Editor</span>
+                    <span class="realRightNav" onClick="toggleEditUI()">Toggle Edit UI</span>
+                    <span class="realRightNav" onClick="toggleDarkMode()">Toggle Dark Mode</span>
                 </div>
+            </div>
+            
+            <div id="sidebar">
+                <h1>Configure</h1>
+                <div class="settingsCell" id="sidebarColorPicker">
+                    <h3>Tint Colour</h3>
+                    <p>Color that acts as the packages main accent.</p>
+                    <input type='text' placeholder="#2cb1be"/>
+                    <div class="colorPreview" style="background-color: #2cb1be;">h</div>
+                </div>
+                <button onClick="downloadConfig()">Download Depiction</button>
+            </div>
+            
+            <div class="navbar">
+                <div class="leftNavButton">
+                    <a class="backURL">
+                        <div class="backArrow"></div>Back
+                    </a>
+                </div>
+                <div class="changedNavbarItems">
+                    <div id="navbarTweakIcon" style="background-image: url('https://pinpal.github.io/Sileo-Depiction-WebViews/assets/categories/Tweaks.png')"></div>
+                    <div class="rightNavButton">
+                        <div class="priceButton" onclick="modifyButton()">Price</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="previewBox">
+    
+                <div id="bannerWrapper" class="editableImage" onClick="editImage('bannerImage')">
+                    <div id="bannerImage"></div>
+                    <div class="editButton editUI"></div>
+                </div>
+    
+                <div class="headerSection">
+                    <div id="tweakIcon" style='background-image: url("https://pinpal.github.io/Sileo-Depiction-WebViews/assets/categories/Tweaks.png")'></div>
+                    <h1 id="tweakName">Tweak Name</h1>
+                    <h4 id="developerName">Developer</h4>
+                    <div class="priceButton">Price</div>
+                </div>
+    
+                <div class="headerPillSelector" style="visibility: hidden;">
+                    <div id="pillSelectors"></div>
+                    <div class="pillSelectorLine"></div>
+                    <div id="editTabsButton" class="editUI" onClick="editTabs()">Edit Tabs</div>
+                </div>
+    
+                <div id="mainWrapper"></div>
+            </div>
         </div>
 
         <div id="alertContainer">
             <div id="alertWindow">
                 <div id="alertErrors"></div>
-                <h1 id="alertHeader">Heading</h1>
-                <h2 id="alertSubheader">Subheading</h1>
+                <h1 id="alertHeader"></h1>
+                <h2 id="alertSubheader"></h1>
 
                 <!-- Edit Tabs -->
                 <div id="editTabsUI" style="display:none" class="alertContent">

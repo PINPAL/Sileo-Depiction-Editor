@@ -17,6 +17,13 @@
             box-sizing: border-box;
             border-radius: 10px;
         }
+        .editor-preview, .editor-preview-side {
+            background-color: var(--dark-ui-color);
+        }
+        .editor-toolbar a {
+            margin-top: 25px;
+            transform: translateY(-50%);
+        }
         .editor-toolbar, .editor-statusbar {
             text-align: center;
             height: 50px;
@@ -34,7 +41,7 @@
                 font-size: 12pt;
             }
         }
-        .editor-toolbar a, .editor-toolbar:before  {
+        .editor-toolbar:before  {
             margin: 0 !important;
         }
         .CodeMirror {
@@ -42,4 +49,8 @@
             margin-top: 10px;
         }
     }
+}
+
+.darkMode .editor-toolbar a {
+    filter: invert(1);
 }

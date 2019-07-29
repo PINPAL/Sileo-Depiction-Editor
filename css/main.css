@@ -296,7 +296,7 @@
   -ms-transition: opacity 0.35s ease; }
 
 #alertWindow {
-  max-height: calc(100% - 130px);
+  max-height: calc(100% - 150px);
   overflow-y: scroll;
   width: calc(100% - 20px);
   max-width: 1000px;
@@ -305,7 +305,7 @@
   box-sizing: border-box;
   background-color: var(--bg-color);
   position: absolute;
-  top: calc(50% + 37px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
   #alertWindow #alertHeader {
@@ -497,8 +497,6 @@
       #addViewUI .viewPreviewContainer:hover h1 {
         color: var(--tint-color);
         font-weight: bold; }
-      #addViewUI .viewPreviewContainer:hover svg .bg {
-        opacity: 0; }
     #addViewUI .viewPreviewContainer h1 {
       margin-top: 10px;
       font-size: 12pt;
@@ -595,6 +593,11 @@
     background-color: rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     border-radius: 10px; }
+  #alertWindow #editDepictionMarkdownView .editor-preview, #alertWindow #editDepictionMarkdownView .editor-preview-side {
+    background-color: var(--dark-ui-color); }
+  #alertWindow #editDepictionMarkdownView .editor-toolbar a {
+    margin-top: 25px;
+    transform: translateY(-50%); }
   #alertWindow #editDepictionMarkdownView .editor-toolbar, #alertWindow #editDepictionMarkdownView .editor-statusbar {
     text-align: center;
     height: 50px;
@@ -609,11 +612,14 @@
       text-transform: capitalize;
       margin-top: 0;
       font-size: 12pt; }
-  #alertWindow #editDepictionMarkdownView .editor-toolbar a, #alertWindow #editDepictionMarkdownView .editor-toolbar:before {
+  #alertWindow #editDepictionMarkdownView .editor-toolbar:before {
     margin: 0 !important; }
   #alertWindow #editDepictionMarkdownView .CodeMirror {
     padding: 20px;
     margin-top: 10px; }
+
+.darkMode .editor-toolbar a {
+  filter: invert(1); }
 
 .hideEditUI .editUI {
   display: none; }
@@ -623,7 +629,7 @@
 
 html {
   --body-bg-color: #f8f9fa;
-  --dark-ui-color: rgba(0,0,0,.1);
+  --dark-ui-color: rgb(206,206,206);
   --darker-ui-color: rgba(0,0,0,.2);
   --sidebarTableCellBg: rgba(0,0,0,.03);
   --editor-border-color: rgb(223, 223, 223);
@@ -632,7 +638,7 @@ html {
 
 .darkMode {
   --body-bg-color: #1e1e1f;
-  --dark-ui-color: rgba(0,0,0,.2);
+  --dark-ui-color: rgb(29,29,29);
   --darker-ui-color: rgba(0,0,0,.4);
   --sidebarTableCellBg: rgba(0,0,0,.08);
   --editor-border-color: #262629;
