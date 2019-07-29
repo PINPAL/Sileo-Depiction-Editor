@@ -133,6 +133,23 @@ function indexInClass(node) {
     return -1;
 }
 
+// Define Navbar Items (Improve Scrolling Animation Responsiveness)
+const navbar = document.getElementsByClassName("navbar")[0]
+const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
+
+// Navbar & Banner Scrolling Animation
+document.getElementById("previewBox").addEventListener('scroll', function updateNavbar() {
+    var scrollTop = document.getElementById("previewBox").scrollTop;
+    navbar.style.opacity = scrollTop / 150
+    //bannerNavItems.style.opacity = 1 - (scrollTop / 100)
+    // Only show right/center navbar items after 150 pixels of scroll
+    if (scrollTop > 150) {
+        changedNavbarItems.style.opacity  = 1
+    } else {
+        changedNavbarItems.style.opacity  = 0
+    }
+})
+
 
 // Function called when user clicks "Add View" button
 var newViewIndex

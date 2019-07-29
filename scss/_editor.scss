@@ -2,7 +2,6 @@
     scrollbar-width: none;
     overflow-x: visible;
     overflow-y: scroll;
-    position: relative;
     box-shadow: 10px 10px 15px rgba(0,0,0,.05),
                 -10px -10px 15px rgba(0,0,0,.05);
     width: 66%;
@@ -18,6 +17,14 @@
 #previewBox::-webkit-scrollbar {
     width: 0px;
     background: transparent; 
+}
+// PreviewBox Navbar
+.navbar {
+    transform: translateX(-50%);
+    min-width: calc((100vh - 105px)/2.11) !important;
+    top: 90px;
+    left: 66%;
+    max-width: calc((100vh - 105px)/2.11);
 }
 
 .editableImage {
