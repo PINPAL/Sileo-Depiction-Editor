@@ -1,15 +1,15 @@
 // Switch page for alert window
 @keyframes switchAlertPage {
     50% {
-        transform: translate(-150%, -50%) scale(0);
+        transform: translateX(-100%);
         opacity: 0;
     }
     51% {
-        transform: translate(50%, -50%) scale(0);
+        transform: translateX(100%);
         opacity: 0;
     }
     to {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translateX(0%);
         opacity: 1;
     }
 }

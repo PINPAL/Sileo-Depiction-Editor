@@ -1,14 +1,14 @@
-config =
-    {
-        "class": "DepictionTabView",
-        "minVersion": "0.1",
-        "tabs": [
-            {
-                "tabname":"Tab Name",
-                "views":[]
-            }
-        ]
-    }
+var config =
+{
+    "class": "DepictionTabView",
+    "minVersion": "0.1",
+    "tabs": [
+        {
+            "tabname":"Tab Name",
+            "views":[]
+        }
+    ]
+}
 
 // Variable that stores which tab the user is currently in
 var currentViewingTab = 0
@@ -87,32 +87,6 @@ function renderSileoDepiction(config) {
     changePillSelector(document.getElementsByClassName("pillText")[currentViewingTab])
 }
 
-// Initialise Color Picker on Sidebar
-var tintColorPicker = new CP(document.getElementById("editTintColorUI"))
-document.getElementById("editTintColorUI").value = "#2cb1be"
-// Update Color Picker when color Changes
-tintColorPicker.on("drag", function(color) {
-    document.getElementById("editTintColorUI").getElementsByTagName("input")[0].value = '#' + color;
-    document.getElementsByClassName("colorPreview")[0].style.backgroundColor = '#' + color;
-    document.getElementsByTagName('html')[0].style.setProperty("--tint-color", '#' + color)
-    config.tintColor = '#' + color
-});
-
-// Initialise Color Picker on Label UI font color
-var fontColorPicker = new CP(document.getElementsByClassName("fontColor")[0])
-// Update Color Picker when color Changes
-fontColorPicker.on("drag", function(color) {
-    document.getElementsByClassName("fontColor")[0].value = "#" + color
-    document.getElementsByClassName("fontColor")[0].style.color = "#" + color
-});
-// Initialise Color Picker on Label UI font color
-var tableTintColorPicker = new CP(document.getElementsByClassName("tableTintColorPicker")[0])
-// Update Color Picker when color Changes
-tableTintColorPicker.on("drag", function(color) {
-    document.getElementsByClassName("tableTintColorPicker")[0].value = "#" + color
-    document.getElementsByClassName("tableTintColorPicker")[0].style.color = "#" + color
-});
-
 // Function to export JSON
 function downloadConfig() {
     //Export to text file
@@ -135,66 +109,6 @@ function indexInClass(node) {
     return -1;
 }
 
-// Define Navbar Items (Improve Scrolling Animation Responsiveness)
-const navbar = document.getElementsByClassName("navbar")[0]
-const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
-
-// Navbar & Banner Scrolling Animation
-document.getElementById("previewBox").addEventListener('scroll', function updateNavbar() {
-    var scrollTop = document.getElementById("previewBox").scrollTop;
-    navbar.style.opacity = scrollTop / 150
-    //bannerNavItems.style.opacity = 1 - (scrollTop / 100)
-    // Only show right/center navbar items after 150 pixels of scroll
-    if (scrollTop > 150) {
-        changedNavbarItems.style.opacity  = 1
-    } else {
-        changedNavbarItems.style.opacity  = 0
-    }
-})
-
-
-// Function called when user clicks "Add View" button
-var newViewIndex
-function callAddViewUI(element) {
-    newViewIndex = indexInClass(element)
-    createAlert(
-        "Add View",
-        "Add Section to " + element.parentElement.id.slice(0,-7),
-        "addViewUI",
-        null
-    )
-}
-
-// Function called when user clicks "edit image" button
-function editImage(imageForEditing) {
-    createAlert(
-                "Change Image",
-                "Package Header Banner",
-                "editImageUI",
-                "saveBanner()"
-    )
-}
-
-// Function called when user clicks "Add Tab" button
-function editTabs() {
-    createAlert (
-        "Edit Tabs",
-        "Create or Edit Section Tabs",
-        "editTabUI",
-        "saveEditTabs()"
-    )
-}
-
-// Function called when user clicks "Tint Color" button
-function editTintColor() {
-    createAlert (
-        "Edit Tint Color",
-        "Edit Main Accent Color",
-        "editTintColorUI",
-        null
-    )
-}
-
 // Function to validate image URL
 function validateImageURL(imageURL) {
     if (imageURL.match(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/)) {
@@ -203,29 +117,4 @@ function validateImageURL(imageURL) {
     return false
 }
 
-// Function called when user clicks "Toggle Edit UI"
-function toggleEditUI() {
-    document.getElementsByTagName("body")[0].classList.toggle("hideEditUI")
-}
 
-// Switch between tabs (in preview)
-function changePillSelector(element) {
-    // Reset color of all Pill Texts
-    pillTexts = document.getElementsByClassName("pillText")
-    for (i=0; i<pillTexts.length; i++) {
-        pillTexts[i].style.color = "var(--medium-text-color)"
-    }
-    // Hide all Tab Content
-    tabContents = document.getElementsByClassName("tabContent")
-    for (i=0; i<tabContents.length; i++) {
-        tabContents[i].style.display = "none"
-    }
-    // Set currentTab
-    currentViewingTab = indexInClass(element)
-    // Move Pill Selector Line
-    document.getElementsByClassName("pillSelectorLine")[0].style.left = element.style.left
-    // Set Color of Selected Pill text 
-    element.style.color = "var(--tint-color)"
-    // Show Tab Content
-    document.getElementById(element.id.slice(0,-6) + "Content").style.display = "block"
-}

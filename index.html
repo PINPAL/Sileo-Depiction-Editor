@@ -21,10 +21,13 @@
             <div id="sidebar">
                 <img src="img/blazerepo.png" id="logo">
                 <div id="sidebarButtons">
-                    <div onClick="editTabs()" style="background-image: url('img/edit.svg')">Edit Tabs</div>
-                    <div onClick="editTintColor()" style="background-image: url('img/editColor.svg')">Tint Color</div>
-                    <div onClick="toggleEditUI()" style="background-image: url('img/editMode.svg')">Edit Mode</div>
-                    <div onClick="toggleDarkMode()" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
+                    <div class="sidebarButton" onClick="editTabs()" style="background-image: url('img/edit.svg')">Edit Tabs</div>
+                    <div class="seperator"></div>
+                    <div class="sidebarButton" onClick="editTintColor()" style="background-image: url('img/editColor.svg')">Tint Color</div>
+                    <div class="seperator"></div>
+                    <div class="sidebarButton" onClick="toggleEditUI()" style="background-image: url('img/editMode.svg')">Edit Mode</div>
+                    <div class="seperator"></div>
+                    <div class="sidebarButton" onClick="toggleDarkMode()" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
                 </div>
                 <div id="alertErrors"></div>
                 <h1 id="alertHeader">Welcome</h1>
@@ -573,9 +576,12 @@
     </body>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src='js/color-picker.js'></script>
+    <script src='js/initialiseColorPickers.js'></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown"></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/viewHandler.js"></script>
+    <script src="js/depictionPreview.js"></script>
+    <script src="js/buttonHandlers.js"></script>
     <script src="js/alerts.js"></script>
     <script src="js/addViewUI.js"></script>
     <script src="js/editBannerUI.js"></script>

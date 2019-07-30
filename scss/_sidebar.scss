@@ -21,24 +21,38 @@
         float: right;
 
         div {
-            border-color: rgba(255,255,255,.3);
-            border-width: 3px;
-            border-right-style: solid;
-            &:last-of-type {
-                border-right-style: none;
-            }
+            white-space: nowrap;
+            float: right;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .seperator {
+            width: 4px;
+            background-color: rgba(255,255,255,.3);
+            height: 42px;
+            border-radius: 100px;
+        }
+
+        .sidebarButton {
+            cursor: pointer;
+            box-sizing: border-box;
             font-size: 12pt;
             font-weight: 600;
-            height: 25px;
-            line-height: 25px;
-            white-space: nowrap;
-            display: inline-block;
-            padding: 5px 20px;
-            padding-left: 55px;
+            margin: auto 5px;
+            padding: 10px;
+            padding-left: 45px;
             color: white;
             background-repeat: no-repeat;
             background-size: 27px;
-            background-position: 20px center;
+            background-position: 10px center;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: rgba(255,255,255,.2);
+            }
         }
     }
 

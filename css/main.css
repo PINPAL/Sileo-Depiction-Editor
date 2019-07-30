@@ -192,23 +192,32 @@
   #sidebar #sidebarButtons {
     float: right; }
     #sidebar #sidebarButtons div {
-      border-color: rgba(255, 255, 255, 0.3);
-      border-width: 3px;
-      border-right-style: solid;
+      white-space: nowrap;
+      float: right;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+    #sidebar #sidebarButtons .seperator {
+      width: 4px;
+      background-color: rgba(255, 255, 255, 0.3);
+      height: 42px;
+      border-radius: 100px; }
+    #sidebar #sidebarButtons .sidebarButton {
+      cursor: pointer;
+      box-sizing: border-box;
       font-size: 12pt;
       font-weight: 600;
-      height: 25px;
-      line-height: 25px;
-      white-space: nowrap;
-      display: inline-block;
-      padding: 5px 20px;
-      padding-left: 55px;
+      margin: auto 5px;
+      padding: 10px;
+      padding-left: 45px;
       color: white;
       background-repeat: no-repeat;
       background-size: 27px;
-      background-position: 20px center; }
-      #sidebar #sidebarButtons div:last-of-type {
-        border-right-style: none; }
+      background-position: 10px center;
+      border-radius: 10px; }
+      #sidebar #sidebarButtons .sidebarButton:hover {
+        background-color: rgba(255, 255, 255, 0.2); }
   #sidebar h1 {
     font-size: 36pt;
     color: white;
@@ -233,13 +242,13 @@
 
 @keyframes switchAlertPage {
   50% {
-    transform: translate(-150%, -50%) scale(0);
+    transform: translateX(-100%);
     opacity: 0; }
   51% {
-    transform: translate(50%, -50%) scale(0);
+    transform: translateX(100%);
     opacity: 0; }
   to {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(0%);
     opacity: 1; } }
 
 .switchAlertPage {
