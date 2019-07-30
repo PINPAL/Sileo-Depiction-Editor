@@ -25,9 +25,9 @@
                     <div class="seperator"></div>
                     <div class="sidebarButton" onClick="editTintColor()" style="background-image: url('img/editColor.svg')">Tint Color</div>
                     <div class="seperator"></div>
-                    <div class="sidebarButton" onClick="toggleEditUI()" style="background-image: url('img/editMode.svg')">Edit Mode</div>
+                    <div class="sidebarButton" onClick="toggleEditUI(this)" style="background-image: url('img/previewMode.svg')">Preview Mode</div>
                     <div class="seperator"></div>
-                    <div class="sidebarButton" onClick="toggleDarkMode()" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
+                    <div class="sidebarButton" id="darkModeButton" onClick="toggleDarkMode(this)" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
                 </div>
                 <div id="alertErrors"></div>
                 <h1 id="alertHeader">Welcome</h1>
@@ -575,11 +575,11 @@
 
     </body>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script src='js/color-picker.js'></script>
-    <script src='js/initialiseColorPickers.js'></script>
-    <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/showdown"></script>
+    <script src='js/color-picker.js'></script>
+    <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/viewHandler.js"></script>
+    <script src='js/initialiseColorPickers.js'></script>
     <script src="js/depictionPreview.js"></script>
     <script src="js/buttonHandlers.js"></script>
     <script src="js/alerts.js"></script>

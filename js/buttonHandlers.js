@@ -40,7 +40,27 @@ function editTintColor() {
     )
 }
 
+// Function called by buttons that toggle dark mode on/off
+function toggleDarkMode(element) {
+    let darkModeStatus = getCookie("enableDarkMode")
+    if (darkModeStatus) {
+        element.innerText = "Dark Mode"
+        setCookie("enableDarkMode",false)
+    } else {
+        element.innerText = "Light Mode"
+        setCookie("enableDarkMode",true)
+    }
+    refreshDarkMode()
+}
+
 // Function called when user clicks "Toggle Edit UI"
-function toggleEditUI() {
+function toggleEditUI(element) {
+    if (element.innerText == "Edit Mode") {
+        element.style.backgroundImage = "url('img/previewMode.svg')"
+        element.innerText = "Preview Mode"
+    } else {
+        element.style.backgroundImage = "url('img/editMode.svg')"
+        element.innerText = "Edit Mode"
+    }
     document.getElementsByTagName("body")[0].classList.toggle("hideEditUI")
 }

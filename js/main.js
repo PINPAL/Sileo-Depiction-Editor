@@ -13,6 +13,7 @@ var config =
 // Variable that stores which tab the user is currently in
 var currentViewingTab = 0
 
+// Render Depiction on page load
 renderSileoDepiction(config)
 
 //Generate from Config Function
@@ -85,6 +86,11 @@ function renderSileoDepiction(config) {
     }
     // Initial Styling of Pill Selector (Switch to the currently being viewed tab)
     changePillSelector(document.getElementsByClassName("pillText")[currentViewingTab])
+}
+
+// Update Dark Mode Button Status on page load
+if (getCookie("enableDarkMode")) {
+    document.getElementById("darkModeButton").innerText = "Light Mode"
 }
 
 // Function to export JSON
