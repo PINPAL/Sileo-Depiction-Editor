@@ -1,32 +1,85 @@
-#previewBox {
-    scrollbar-width: none;
-    overflow-x: visible;
-    overflow-y: scroll;
-    box-shadow: 10px 10px 15px rgba(0,0,0,.05),
-                -10px -10px 15px rgba(0,0,0,.05);
-    width: 66%;
-    max-width: calc((100vh - 105px)/2.11);
-    height: calc(100vh - 105px);
-    border-radius: 5px;
-    background-color: var(--bg-color);
+// Center Wrapper
+#everythingWrapper {
+    width: calc(100% - 40px);
+    max-width: 1310px;
+    height: calc(100% - 40px);
     position: absolute;
-    top: 90px;
-    left: 66%;
-    transform: translateX(-50%);
-}
-#previewBox::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    // iPhone X Outline
+    #iX {
+        pointer-events: none;
+        width: calc((100vh - 105px)/2.11);
+        height: calc(100vh - 105px);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        z-index: 1000;
+    }
+
+    // Preview inside iPhone X Outline
+    #previewBox {
+        scrollbar-width: none;
+        overflow-x: visible;
+        overflow-y: scroll;
+        box-shadow: 10px 10px 15px rgba(0,0,0,.05),
+                    -10px -10px 15px rgba(0,0,0,.05);
+        width: calc((100vh - 200px)/2.16);
+        height: calc(100vh - 150px);
+        background-color: var(--bg-color);
+        position: absolute;
+        top: 50%;
+        right: 25px;
+        transform: translateY(-50%);
+    
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        
+        // Increase Banner Height for Notch
+        #bannerWrapper {
+            min-height: 230px;
+    
+            #bannerImage {
+                min-height: 230px;
+            }
+        }
+    
+        // Fit Navbar
+        .navbar {
+            transform: translateX(-50%);
+            min-width: calc((100vh - 200px)/2.16) !important;
+            top: 132.5px;
+            left: 66%;
+            max-width: calc((100vh - 105px)/2.11);
+        }
+    }
 }
 
-// Preview Box Navbar
-.navbar {
-    transform: translateX(-50%);
-    min-width: calc((100vh - 105px)/2.11) !important;
-    top: 90px;
-    left: 66%;
-    max-width: calc((100vh - 105px)/2.11);
+/* Background Shapes */
+#backgroundSquare, #backgroundCircle {
+    background-color: var(--bg-shape-color);
+    width: 50vw;
+    height: 50vw;
+    position: absolute;
 }
+#backgroundSquare {
+    transform: translate(55%, -40%) rotate(45deg);
+    border-radius: 50px;
+    top: 0;
+    right: 0;
+}
+#backgroundCircle {
+    transform: translate(-35%, 65%);
+    border-radius: 50%;
+    bottom: 0;
+    left: 0;
+}
+
 
 .editableImage {
     cursor: pointer;
@@ -58,10 +111,6 @@
     -moz-transition: transform 0.3s ease, opacity 0.3s ease;
     -o-transition: transform 0.3s ease, opacity 0.3s ease;
     -ms-transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.headerPillSelector {
-    max-width: calc(100% - 41px) !important;
 }
 
 /* Edit Tabs Button */
