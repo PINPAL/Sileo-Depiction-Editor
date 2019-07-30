@@ -43,15 +43,21 @@ function clearAlertContent() {
         "editDepictionTableButtonView",
         "editDepictionSpacerView"
     ]
+    // Hide Old Content in Alert
     for (i=0; i<hiddenIDs.length; i++) {
         document.getElementById(hiddenIDs[i]).style.display = "none"
     }
+    // Unfocus focussed content
+    var focuedElements = document.getElementsByClassName("focused")
+    for (i=0; i<focuedElements.length; i++) {
+        focuedElements[i].classList.remove("focused")
+    }
+    // Hide Focus Window
+    document.getElementById("previewElementFocuser").style.display = "none"
 }
 
 // Function to "scroll" to second alert
 function switchAlertPage(headerString, subheaderString, contentType, saveEvent) {
-    // Hide old content
-    clearAlertContent()
     // Update Alert
     document.getElementById("alertWindow").classList.add("switchAlertPage")
     createAlert(headerString,subheaderString,contentType,saveEvent)

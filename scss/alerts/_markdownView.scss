@@ -7,6 +7,13 @@
         * {
             border: none !important;
         }
+        .CodeMirror {
+            min-height: 120px;
+            height: auto;
+        }
+        .CodeMirror-scroll {
+            min-height: 120px;
+        }
         .CodeMirror-cursor {
             border-left: 1px solid var(--text-color) !important;
         }

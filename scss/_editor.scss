@@ -48,6 +48,21 @@
                 min-height: 230px;
             }
         }
+
+        // Dark Overlay for focusing elements within preview
+        #previewElementFocuser {
+            display: none;
+            z-index: 9999;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,.65);
+        }
+        .focused {
+            z-index: 10000;
+        }
     
         // Fit Navbar
         .navbar {
@@ -136,6 +151,8 @@
 
 // Add View Button
 .addViewButton {
+    color: rgba(0,0,0,0);
+    background-color: var(--bg-color);
     position: relative;
     opacity: 0.4;
     cursor: pointer;
@@ -151,6 +168,31 @@
     -moz-transition: height 0.3s ease, border-color 0.3s ease;
     -o-transition: height 0.3s ease, border-color 0.3s ease;
     -ms-transition: height 0.3s ease, border-color 0.3s ease;
+
+    &.focused {
+        color: var(--tint-color);
+        opacity: 1;
+        border-color: var(--tint-color);
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+
+        div {
+            display: none;
+        }
+    }
+
+    &:hover {
+        opacity: 1;
+        border-color: var(--tint-color);
+        height: 100px;
+    
+        div {
+            background-color: var(--tint-color);
+            width: 25px;
+            height: 25px;
+        }
+    }
 
     div {
         transform: translate(-50%, -50%);
@@ -173,16 +215,5 @@
         // -moz-transition: mask-size 0.3s ease;
         // -o-transition: mask-size 0.3s ease;
         // -ms-transition: mask-size 0.3s ease;
-    }
-}
-.addViewButton:hover {
-    opacity: 1;
-    border-color: var(--tint-color);
-    height: 100px;
-
-    div {
-        background-color: var(--tint-color);
-        width: 25px;
-        height: 25px;
     }
 }

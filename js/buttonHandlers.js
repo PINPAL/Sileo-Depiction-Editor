@@ -8,6 +8,9 @@ function callAddViewUI(element) {
         "addViewUI",
         null
     )
+    // Focus New View Position
+    document.getElementById("previewElementFocuser").style.display = "inline"
+    element.classList.add("focused")
 }
 
 // Function called when user clicks "edit image" button
@@ -28,6 +31,9 @@ function editTabs() {
         "editTabUI",
         "saveEditTabs()"
     )
+    // Focus Tabs in Preview
+    document.getElementById("previewElementFocuser").style.display = "inline"
+    document.getElementsByClassName("headerPillSelector")[0].classList.add("focued")
 }
 
 // Function called when user clicks "Tint Color" button

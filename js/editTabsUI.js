@@ -56,6 +56,9 @@ function deleteTab(element) {
 
 // Function called when user clicks "Save Changes" on EditTabsUI
 function saveEditTabs() {
+    // Unfocus Tabs
+    document.getElementById("previewElementFocuser").style.display = "none"
+    document.getElementsByClassName("headerPillSelector")[0].style.zIndex = 1
     // Save name changes & refresh
     updateTabEditUI()
     // Re-render Preview

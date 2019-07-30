@@ -53,7 +53,7 @@ function renderSileoDepiction(config) {
         tabContent.id = config.tabs[currentTab].tabname + "Content"
         // Create Initial Add View Button
         var addButton = document.createElement("div")
-        addButton.innerHTML = "<div></div>"
+        addButton.innerHTML = "Your View Here<div></div>"
         addButton.className = "addViewButton"
         addButton.classList.add("editUI")
         addButton.setAttribute("onClick","callAddViewUI(this)")
@@ -65,7 +65,7 @@ function renderSileoDepiction(config) {
             tabContent.appendChild(view)
             // Create Editor Add View Button
             var addButton = document.createElement("div")
-            addButton.innerHTML = "<div></div>"
+            addButton.innerHTML = "Your View Here<div></div>"
             addButton.className = "addViewButton"
             addButton.classList.add("editUI")
             addButton.setAttribute("onClick","callAddViewUI(this)")
