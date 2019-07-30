@@ -79,5 +79,4 @@ function createAlert(headerString,subheaderString,contentType,saveEvent) {
     } else {
         document.getElementById(contentType).style.display = "block"
     }
-    document.getElementsByTagName("body")[0].classList.add("alertVisible")
 }
