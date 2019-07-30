@@ -612,7 +612,6 @@ body {
   overflow: hidden;
   margin: 0; }
 
-/* Background Shapes */
 #backgroundSquare, #backgroundCircle {
   background-color: var(--bg-shape-color);
   width: 50vw;
