@@ -41,25 +41,6 @@
       left: 66%;
       max-width: calc((100vh - 105px)/2.11); }
 
-/* Background Shapes */
-#backgroundSquare, #backgroundCircle {
-  background-color: var(--bg-shape-color);
-  width: 50vw;
-  height: 50vw;
-  position: absolute; }
-
-#backgroundSquare {
-  transform: translate(55%, -40%) rotate(45deg);
-  border-radius: 50px;
-  top: 0;
-  right: 0; }
-
-#backgroundCircle {
-  transform: translate(-35%, 65%);
-  border-radius: 50%;
-  bottom: 0;
-  left: 0; }
-
 .editableImage {
   cursor: pointer;
   position: relative; }
@@ -77,7 +58,7 @@
   mask-size: 35px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(../img/edit.svg);
+  background-image: url(https://pinpal.github.io/Sileo-Depiction-Editor/img/edit.svg);
   position: absolute;
   top: 50%;
   left: 50%;
