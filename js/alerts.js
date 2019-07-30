@@ -16,9 +16,13 @@ function hideAlert() {
     document.getElementById("alertButton").style.display = "none"
     document.getElementById("alertWindow").classList.remove("switchAlertPage")
     document.getElementById("alertErrors").innerHTML = ""
-    document.getElementsByTagName("body")[0].classList.remove("alertVisible")
-    // Hide old content
-    clearAlertContent()
+    // Bring back Welcome UI
+    createAlert(
+        "Welcome",
+        "Sileo Depiction Generator",
+        "welcomeMessage",
+        null
+    )
 }
 
 // Hide old alert content
