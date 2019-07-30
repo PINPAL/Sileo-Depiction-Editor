@@ -88,11 +88,11 @@ function renderSileoDepiction(config) {
 }
 
 // Initialise Color Picker on Sidebar
-var tintColorPicker = new CP(document.getElementById("sidebarColorPicker"))
-document.getElementById("sidebarColorPicker").value = "#2cb1be"
+var tintColorPicker = new CP(document.getElementById("editTintColorUI"))
+document.getElementById("editTintColorUI").value = "#2cb1be"
 // Update Color Picker when color Changes
 tintColorPicker.on("drag", function(color) {
-    document.getElementById("sidebarColorPicker").getElementsByTagName("input")[0].value = '#' + color;
+    document.getElementById("editTintColorUI").getElementsByTagName("input")[0].value = '#' + color;
     document.getElementsByClassName("colorPreview")[0].style.backgroundColor = '#' + color;
     document.getElementsByTagName('html')[0].style.setProperty("--tint-color", '#' + color)
     config.tintColor = '#' + color
@@ -182,6 +182,16 @@ function editTabs() {
         "Create or Edit Section Tabs",
         "editTabUI",
         "saveEditTabs()"
+    )
+}
+
+// Function called when user clicks "Tint Color" button
+function editTintColor() {
+    createAlert (
+        "Edit Tint Color",
+        "Edit Main Accent Color",
+        "editTintColorUI",
+        null
     )
 }
 

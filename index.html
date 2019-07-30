@@ -12,26 +12,524 @@
         <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
+
+        <div id="backgroundCircle"></div>
+        <div id="backgroundSquare"></div>
         
         <div id="everythingWrapper">
 
-            <div id="realPageNavbar">
-                <div>
-                    <span class="realLeftNav">Sileo Depiction Editor</span>
-                    <span class="realRightNav" onClick="toggleEditUI()">Toggle Edit UI</span>
-                    <span class="realRightNav" onClick="toggleDarkMode()">Toggle Dark Mode</span>
-                </div>
-            </div>
-            
             <div id="sidebar">
-                <h1>Configure</h1>
-                <div class="settingsCell" id="sidebarColorPicker">
-                    <h3>Tint Colour</h3>
-                    <p>Color that acts as the packages main accent.</p>
-                    <input type='text' placeholder="#2cb1be"/>
-                    <div class="colorPreview" style="background-color: #2cb1be;">h</div>
+                <img src="img/blazerepo.png" id="logo">
+                <div id="sidebarButtons">
+                    <div onClick="editTabs()" style="background-image: url('img/edit.svg')">Edit Tabs</div>
+                    <div onClick="editTintColor()" style="background-image: url('img/editColor.svg')">Tint Color</div>
+                    <div onClick="toggleEditUI()" style="background-image: url('img/editMode.svg')">Edit Mode</div>
+                    <div onClick="toggleDarkMode()" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
                 </div>
-                <button onClick="downloadConfig()">Download Depiction</button>
+                <div id="alertErrors"></div>
+                <h1 id="alertHeader">Welcome</h1>
+                <h2 id="alertSubheader">Sileo Depiction Generator</h1>
+                <div id="alertContainer">
+                    <div id="alertWindow">
+
+                        <!-- Welcome Message -->
+                        <div id="welcomeMessage" class="alertContent">
+                            <img src="https://pinpal.github.io/Sileo-Depiction-WebViews/assets/icon.png" width=100px height=100px>
+                            <h1>Welcome to the Sileo Depiction Generator</h1>
+                            <h2>Create Depictions the easy way!</h2>
+                            <p>Using this simple and easy to use editor you can arrange, delete and add sections to the depiction, edit tint colors, change images,
+                                add a heading banner, preview your depiction and take advantage of many more features.
+                            </p>
+                            <p>
+                                To get started it's super easy, just go ahead and click the plus icon inside the preview on the right to add a section.
+                                You can add section tabs to the depiction using the "Edit Tabs" button at the top.
+                            </p>
+                        </div>
+
+                        <!-- Edit Tint Color -->
+
+                        <div id="editTintColorUI" style="display:none" class="alertContent">
+                            <p>Color that acts as the packages main accent.</p>
+                            <input type='text' placeholder="#2cb1be"/>
+                            <div class="colorPreview" style="background-color: #2cb1be;">h</div>
+                        </div>
+
+                        <!-- Edit Tabs -->
+                        <div id="editTabsUI" style="display:none" class="alertContent">
+                            <p>Tabs are separate screens that are made up of views. 
+                                </br>They can be used to separate between more important data (such as a package’s name)
+                                and other supplemental information (such as a changelog).</p>
+                            <h3>Current Tabs:</h3>
+                            <div id="tabEditorTable"></div>
+                            <div id="addTabButton" onClick="addNewTab()">Add New Tab</div>
+                        </div>
+        
+                        <!-- Edit Banner Image -->
+                        <div id="editBannerUI" style="display:none" class="alertContent">
+                            <p>The URL of the image that should be displayed in the topmost header of the package page.</p>
+                            <p>Support all basic image formats such as jpg/png.</p>
+                            <input type="text" id="bannerUrlField" placeholder="https://the.location.of.your.image/image.png">
+                        </div>
+        
+                        <!-- Add New View -->
+                        <div id="addViewUI" style="display:none" class="alertContent">
+                            <div class="viewPreviewContainer" onClick="addView('DepictionHeaderView')">
+                                <!-- <div class="viewPreview" style="background-image: url('img/view-previews/DepictionHeaderView.svg')"></div> -->
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,99h-211c-4.4,0-8-3.6-8-8V59c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v32C238.5,95.4,234.9,99,230.5,99z"/>
+                                    <path class="heading" d="M126,69H25c-2.7,0-5-2.3-5-5l0,0c0-2.8,2.2-5,5-5h101c2.7,0,5,2.2,5,5l0,0C131,66.8,128.8,69,126,69z"/>
+                                </svg>
+                                <h1>Heading</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionSubheaderView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,99h-211c-4.4,0-8-3.6-8-8V59c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v32C238.5,95.4,234.9,99,230.5,99z"/>
+                                    <path class="subheading" d="M99,68H24c-2.2,0-4-1.8-4-4l0,0c0-2.2,1.8-4,4-4h75c2.2,0,4,1.8,4,4l0,0C103,66.2,101.2,68,99,68z"/>
+                                </svg>
+                                <h1>Subheading</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionLabelView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,87.5h-211c-4.4,0-8-3.6-8-8v-9c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v9
+                                            C238.5,83.9,234.9,87.5,230.5,87.5z"/>
+                                    <path class="text" d="M57.5,77.5h-35c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h35c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C60,76.4,58.9,77.5,57.5,77.5z"/>
+                                    <path class="text" d="M73.5,77.5h-8c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h8c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C76,76.4,74.9,77.5,73.5,77.5z"/>
+                                    <path class="text" d="M96.5,77.5h-14c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h14c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C99,76.4,97.9,77.5,96.5,77.5z"/>
+                                    <path class="text" d="M145.5,77.5h-40c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h40c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C148,76.4,146.9,77.5,145.5,77.5z"/>
+                                </svg>
+                                <h1>Label</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionMarkdownView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M226.5,13.5h-203c-6.6,0-12,5.4-12,12v99c0,6.6,5.4,12,12,12h203c6.6,0,12-5.4,12-12v-99
+                                        C238.5,18.9,233.1,13.5,226.5,13.5z"/>
+                                    <path class="heading" d="M124.5,33.7h-101c-2.7,0-5-2.3-5-5l0,0c0-2.8,2.2-5,5-5h101c2.7,0,5,2.2,5,5l0,0
+                                        C129.5,31.5,127.3,33.7,124.5,33.7z"/>
+                                    <path class="subheading" d="M98.5,46.7h-75c-2.2,0-4-1.8-4-4l0,0c0-2.2,1.8-4,4-4h75c2.2,0,4,1.8,4,4l0,0C102.5,44.9,100.7,46.7,98.5,46.7z
+                                        "/>
+                                    <path class="text" d="M207,58.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h185c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                    C209.5,57.6,208.4,58.7,207,58.7z"/>
+                                    <path class="text" d="M179,68.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h157c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C181.5,67.6,180.4,68.7,179,68.7z"/>
+                                    <path class="text" d="M195,78.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h173c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C197.5,77.6,196.4,78.7,195,78.7z"/>
+                                    <path class="text" d="M201,113.5H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h179c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C203.5,112.4,202.4,113.5,201,113.5z"/>
+                                    <path class="text" d="M119,123.5H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h97c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C121.5,122.4,120.4,123.5,119,123.5z"/>
+                                    <path class="text" d="M65.4,88.7H34.5c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h30.9c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C67.9,87.5,66.8,88.7,65.4,88.7z"/>
+                                    <path class="text" d="M71.5,95.8h-37c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h37c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C74,94.7,72.9,95.8,71.5,95.8z"/>
+                                    <path class="text" d="M54.8,102.9H34.5c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h20.3c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C57.3,101.8,56.1,102.9,54.8,102.9z"/>
+                                    <path class="subheading" d="M25.8,88.7L25.8,88.7c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C28.3,87.5,27.1,88.7,25.8,88.7z"/>
+                                    <path class="subheading" d="M25.8,95.8L25.8,95.8c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C28.3,94.7,27.1,95.8,25.8,95.8z"/>
+                                    <path class="subheading" d="M25.8,102.9L25.8,102.9c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
+                                        C28.3,101.8,27.1,102.9,25.8,102.9z"/>
+                                </svg>
+                                <h1>Markdown</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionImageView')">
+                                <svg version="1.1" id="imageViewPreview" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="st1" d="M220.7,119.8H29.6c-6.6,0-12-5.4-12-12V42.3c0-6.6,5.4-12,12-12h191.1c6.6,0,12,5.4,12,12v65.5
+                                        C232.7,114.3,227.3,119.8,220.7,119.8z"/>
+                                    <path class="st2" d="M30.4,97.7c-4.4,0-8.8,0.2-12.8,0.5v16.7c0,2.5,3.5,4.6,7.7,4.6h58.3c0.4-0.9,0.5-1.8,0.5-2.7
+                                        C84.1,106.2,60.1,97.7,30.4,97.7z"/>
+                                    <path class="st3" d="M147.5,92.4c-48,0-87.1,13.9-87.6,31.2h140C199.8,123.5,194.2,92.4,147.5,92.4z"/>
+                                    <path class="st4" d="M168.4,118.3c0,0.5,65.4,0,65.4,0V95C256.3,68.6,168.4,107.7,168.4,118.3z"/>
+                                    <g>
+                                        <path class="box" d="M223.5,31.7c4.4,0,8,3.6,8,8v70.7c0,4.4-3.6,8-8,8h-197c-4.4,0-8-3.6-8-8V39.7c0-4.4,3.6-8,8-8H223.5
+                                            M223.5,21.7h-197c-9.9,0-18,8.1-18,18v70.7c0,9.9,8.1,18,18,18h197c9.9,0,18-8.1,18-18V39.7C241.5,29.7,233.4,21.7,223.5,21.7
+                                            L223.5,21.7z"/>
+                                    </g>
+                                    <circle class="st6" cx="59.9" cy="59.6" r="18.9"/>
+                                </svg>
+                                <h1>Image</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionScreenshotsView')">
+                                <svg version="1.1" id="screenshotsViewPreview" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M229.5,128.4h-209c-6.6,0-12-5.4-12-12V34c0-6.6,5.4-12,12-12h209c6.6,0,12,5.4,12,12v82.4
+                                        C241.5,123,236.1,128.4,229.5,128.4z"/>
+                                    <g>
+                                        <g>
+                                            <path class="st2" d="M72.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                C77.8,116.5,75.5,118.7,72.8,118.7z"/>
+                                            <circle class="st3" cx="34.4" cy="46" r="9.4"/>
+                                        </g>
+                                        <g>
+                                            <defs>
+                                                <path id="SVGID_2_" d="M72.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                    C77.8,116.5,75.5,118.7,72.8,118.7z"/>
+                                            </defs>
+                                            <clipPath id="SVGID_4_">
+                                                <use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
+                                            </clipPath>
+                                            <path class="st4" d="M23.4,95.7c-2.7,0-5.3,0.2-7.8,0.5v16.7c0,2.5,2.1,4.6,4.7,4.6h35.4c0.2-0.9,0.3-1.8,0.3-2.7
+                                                C56,104.2,41.4,95.7,23.4,95.7z"/>
+                                            <path class="st5" d="M62.9,100.2c-23.2,0-42.1,9.5-42.3,21.3h67.6C88.2,121.5,85.5,100.2,62.9,100.2z"/>
+                                        </g>
+                                    </g>
+                                    <path class="st6" d="M135.8,118.9h-48c-2.8,0-5-2.3-5-5V36.7c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                        C140.8,116.7,138.5,118.9,135.8,118.9z"/>
+                                    <path class="st7" d="M102.7,56.6C99,57.8,95,55.7,93.9,52s0.9-7.7,4.6-8.9c0.5-0.2,1.5-0.3,1.5-0.3s-2,4.6,0.2,7.2
+                                        c2.2,2.5,6.9,2.7,6.9,2.7S104.8,56,102.7,56.6z"/>
+                                    <path class="st8" d="M198.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                        C203.8,116.5,201.5,118.7,198.8,118.7z"/>
+                                    <circle class="st9" cx="161.5" cy="46.5" r="7.6"/>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_3_" d="M198.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                C203.8,116.5,201.5,118.7,198.8,118.7z"/>
+                                        </defs>
+                                        <clipPath id="SVGID_5_">
+                                            <use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
+                                        </clipPath>
+                                        <polygon class="st10" points="195.4,76.1 154.8,120.1 216.1,120.1 	"/>
+                                        <polygon class="st11" points="161.1,91.5 181.9,120.3 133.4,120.3 	"/>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <rect id="SVGID_6_" x="208.8" y="31.7" width="21.5" height="91.2"/>
+                                        </defs>
+                                        <clipPath id="SVGID_7_">
+                                            <use xlink:href="#SVGID_6_"  style="overflow:visible;"/>
+                                        </clipPath>
+                                        <g class="st12">
+                                            <g>
+                                                <path class="st13" d="M261.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                    C266.8,116.5,264.5,118.7,261.8,118.7z"/>
+                                            </g>
+                                            <g>
+                                                <defs>
+                                                    <path id="SVGID_1_" d="M261.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                        C266.8,116.5,264.5,118.7,261.8,118.7z"/>
+                                                </defs>
+                                                <clipPath id="SVGID_8_">
+                                                    <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                                                </clipPath>
+                                                <path class="st14" d="M212.4,95.7c-2.7,0-5.3,0.2-7.8,0.5v16.7c0,2.5,2.1,4.6,4.7,4.6h35.4c0.2-0.9,0.3-1.8,0.3-2.7
+                                                    C245,104.2,230.4,95.7,212.4,95.7z"/>
+                                                <path class="st15" d="M251.9,100.2c-23.2,0-42.1,9.5-42.3,21.3h67.6C277.2,121.5,274.5,100.2,251.9,100.2z"/>
+                                            </g>
+                                        </g>
+                                        <ellipse class="st16" cx="229.8" cy="48" rx="9.1" ry="5.2"/>
+                                        <path class="st17" d="M215,52.7"/>
+                                        <path class="st17" d="M236.3,59.1l-6-0.2c-9.7-0.2-14.7-2.4-14.7-5.7v0c0-3.2,3.9-5.6,14.7-5.9h6c3.2,0,5.9,2.6,5.9,5.9v0
+                                            C242.2,56.5,239.5,59.1,236.3,59.1z"/>
+                                    </g>
+                                    <g>
+                                        <defs>
+                                            <path id="SVGID_9_" d="M135.8,118.9h-48c-2.8,0-5-2.3-5-5V36.7c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
+                                                C140.8,116.7,138.5,118.9,135.8,118.9z"/>
+                                        </defs>
+                                        <clipPath id="SVGID_10_">
+                                            <use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
+                                        </clipPath>
+                                        <path class="st18" d="M78.6,118.7c0,0,13.1-33.4,19.3-33.7c5.4-0.2,18.5,21.9,18.5,21.9s6.9-8.7,11.3-8.7
+                                            c6.1,0,17.2,20.7,17.2,20.7L78.6,118.7z"/>
+                                    </g>
+                                    <circle class="st7" cx="105.9" cy="71.4" r="1.4"/>
+                                    <circle class="st7" cx="130.3" cy="54.1" r="1.4"/>
+                                    <circle class="st7" cx="118.8" cy="59.8" r="1"/>
+                                    <circle class="st7" cx="126.1" cy="77.5" r="1.7"/>
+                                    <circle class="st7" cx="87.8" cy="63.9" r="0.7"/>
+                                    <circle class="st7" cx="118.5" cy="37.9" r="1.4"/>
+                                    <circle class="st7" cx="134" cy="88.9" r="0.6"/>
+                                </svg>
+                                <h1>Screenshots</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionTableTextView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,88.6h-211c-4.4,0-8-3.6-8-8V69.4c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v11.3
+                                        C238.5,85,234.9,88.6,230.5,88.6z"/>
+                                    <path class="text" d="M90.4,72.5H22.9c-1.3,0-2.3,1.1-2.3,2.5l0,0c0,1.4,1,2.5,2.3,2.5h67.5c1.3,0,2.3-1.1,2.3-2.5l0,0
+                                        C92.7,73.6,91.7,72.5,90.4,72.5z"/>
+                                    <path class="subheading" d="M226.1,77.4h-31.6c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h31.6c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C228.6,76.3,227.5,77.4,226.1,77.4z"/>
+                                    <line class="ultralight" x1="125" y1="65.7" x2="125" y2="85.3" style="stroke-linecap:round;stroke-miterlimit:10"/>
+                                    <path class="subheading" d="M186.8,77.5h-19.9c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h19.9c1.4,0,2.5,1.1,2.5,2.5l0,0
+                                        C189.3,76.4,188.1,77.5,186.8,77.5z"/>
+                                </svg>
+                                <h1>Table Text</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionTableButtonView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                <rect class="bg" width="250" height="150"/>
+                                <path class="box" d="M230.5,88.6h-211c-4.4,0-8-3.6-8-8V69.4c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v11.3
+                                    C238.5,85,234.9,88.6,230.5,88.6z"/>
+                                <path class="tintText" d="M97.6,72.5H23.1c-1.4,0-2.5,1.1-2.5,2.5l0,0c0,1.4,1.1,2.5,2.5,2.5h74.5c1.4,0,2.5-1.1,2.5-2.5l0,0
+                                    C100.1,73.6,99,72.5,97.6,72.5z"/>
+                                <g>
+                                    <line class="tintText" x1="222" y1="69.6" x2="227.3" y2="74.9" style="stroke-width:3;stroke-linecap:round;stroke-miterlimit:10"/>
+                                    <line class="tintText" x1="227.3" y1="74.9" x2="221.8" y2="80.4" style="stroke-width:3;stroke-linecap:round;stroke-miterlimit:10"/>
+                                </g>
+                                </svg>
+                                <h1>Table Button</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionSeparatorView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,48.1h-211c-4.4,0-8,3.6-8,8v37.8c0,4.4,3.6,8,8,8h211c4.4,0,8-3.6,8-8V56.1
+                                        C238.5,51.7,234.9,48.1,230.5,48.1z"/>
+                                    <g>
+                                        <g>
+                                            <line class="st3" x1="30.6" y1="75" x2="223" y2="75"style="stroke:var(--text-color);opacity:.1;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:12.3756,7.2191"/>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <h1>Separator</h1>
+                            </div>
+                            <div class="viewPreviewContainer" onClick="addView('DepictionSpacerView')">
+                                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
+                                    <rect class="bg" width="250" height="150"/>
+                                    <path class="box" d="M230.5,41.2h-211c-4.4,0-8,4.5-8,10.1v47.5c0,5.5,3.6,10.1,8,10.1h211c4.4,0,8-4.5,8-10.1V51.2
+                                        C238.5,45.7,234.9,41.2,230.5,41.2z"/>
+                                    <g>
+                                        <line class="st2" x1="125" y1="88.2" x2="125" y2="61.8" style="fill:none;stroke:var(--text-color);opacity:.1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:5,5;"/>
+                                        <line class="ultralight" x1="119" y1="57.6" x2="125" y2="51.8"/>
+                                        <line class="ultralight" x1="131" y1="57.6" x2="125" y2="51.8"/>
+                                        <line class="ultralight" x1="119" y1="92.4" x2="125" y2="98.2"/>
+                                        <line class="ultralight" x1="131" y1="92.4" x2="125" y2="98.2"/>
+                                    </g>
+                                </svg>
+                                <h1>Spacer</h1>
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionHeaderView -->
+                        <div id="editDepictionHeaderView" style="display:none" class="alertContent">
+                            <p>Creates a large title intended for separating major sections of a given tab.</p>
+                            <div class="optionWrapper" style="width: calc(100% - 25px)">
+                                <div class="tooltip">The title text displayed within the header.</div>
+                                <input placeholder="Heading Title" type="text" class="titleField">
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Allow margins (white space) above & below the heading.</div>
+                                <label class="checkboxWrapper">
+                                    Use Margins
+                                    <input type="checkbox" class="useMargins" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Make the text bold.</div>
+                                <label class="checkboxWrapper">
+                                    Bold Text
+                                    <input type="checkbox" class="useBoldText" checked="checked" >
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the position of the text within the heading.</div>
+                                Text Alignment
+                                <select class="alignment">
+                                    <option value="0">Left</option>
+                                    <option value="1">Center</option>
+                                    <option value="2">Right</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionSubheaderView -->
+                        <div id="editDepictionSubheaderView" style="display:none" class="alertContent">
+                            <p>Subheaders are smaller headers.</p>
+                            <div class="optionWrapper" style="width: calc(100% - 25px)">
+                                <div class="tooltip">The title text displayed within the subheader.</div>
+                                <input placeholder="Subheading Title" type="text" class="titleField">
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Allow margins (white space) above & below the subheading.</div>
+                                <label class="checkboxWrapper">
+                                    Use Margins
+                                    <input type="checkbox" class="useMargins" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Make the text bold.</div>
+                                <label class="checkboxWrapper">
+                                    Bold Text
+                                    <input type="checkbox" class="useBoldText" checked="checked" >
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionlabelView -->
+                        <div id="editDepictionLabelView" style="display:none" class="alertContent">
+                                <p>Labels are highly-customizable snippets of text with a customizable color.</p>
+                                <input placeholder="Label Text" type="text" class="textField">
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Allow margins (white space) above & below the label.</div>
+                                    <label class="checkboxWrapper">
+                                        Use Margins
+                                        <input type="checkbox" class="useMargins" checked="checked">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Add a slight margin to the top and bottom of the label.</div>
+                                    <label class="checkboxWrapper">
+                                        Use Padding
+                                        <input type="checkbox" class="usePadding">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Change the position of the text within the label.</div>
+                                    Text Alignment
+                                    <select class="alignment">
+                                        <option value="0">Left</option>
+                                        <option value="1">Center</option>
+                                        <option value="2">Right</option>
+                                    </select>
+                                </div>
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Change the weight (thickness) of text within the label.</div>
+                                    Font Weight
+                                    <select class="fontWeight">
+                                        <option value="black" style="font-weight: 1000">Black</option>
+                                        <option value="heavy" style="font-weight: 800">Heavy</option>
+                                        <option value="bold" style="font-weight: bold">Bold</option>
+                                        <option value="semibold" style="font-weight: 600">Semibold</option>
+                                        <option value="regular" style="font-weight: regular" selected="selected">Regular</option>
+                                        <option value="thin" style="font-weight: 200">Thin</option>
+                                        <option value="ultralight" style="font-weight: 100">Ultralight</option>
+                                    </select>
+                                </div>
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Change the size of text within the label.</div>
+                                    Font Size
+                                    <input type="number" class="fontSize" min="0" max="40" value=12>pt
+                                </div>
+                                <div class="optionWrapper">
+                                    <div class="tooltip">Change the color of the label text.</div>
+                                    <input placeholder="#000000" type="text" class="fontColor">
+                                </div>
+                        </div>
+        
+                        <!-- Edit DepictionMarkdownView -->
+                        <div id="editDepictionMarkdownView" style="display:none">
+                            <p>Allows for basic Markdown or HTML to be displayed, ideal for large blocks of text. 
+                                Learn more about markdown <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">here</a>.</p>
+                                <input id="markdownTextField">
+                        </div>
+        
+                        <!-- Edit DepictionImageView -->
+                        <div id="editDepictionImageView" style="display:none" class="alertContent">
+                            <p>Renders an image inside the depiction. Recommended for use in displaying logos or other small images NOT screenshots.</p>
+                            <p>Supports all basic image formats such as jpg/png.</p>
+                            <div class="optionWrapper" style="width: calc(100% - 25px)">
+                                <div class="tooltip">The URL of the image you want to show.</div>
+                                <input placeholder="https://the.location.of.your.image/image.png" type="text" class="urlField">
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the width of the image.</div>
+                                Width
+                                <input type="number" class="widthSlider" min="1" max="200" value=40> px
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the height of the image.</div>
+                                Height
+                                <input type="number" class="heightSlider" min="1" max="200" value=40> px
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the corner roundness of the image.</div>
+                                Corner Radius
+                                <input type="number" class="cornerRadiusSlider" min="0" max="100" value=5>
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the horizontal position of the image within the view.</div>
+                                Image Alignment
+                                <select class="alignment">
+                                    <option value="0">Left</option>
+                                    <option value="1" selected>Center</option>
+                                    <option value="2">Right</option>
+                                </select>
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionScreenshotsView -->
+                        <div id="editDepictionScreenshotsView" style="display:none" class="alertContent">
+                            <p>Displays a screenshot carousel with provided images.</p>
+                            <p>Support all basic image formats such as jpg/png.</p>
+                            <!--
+                            <div class="editScreenshotArray">
+                                <div class="tabEditorCell">
+                                    <input type="text" placeholder="https://location.of.your.image/image.png" class="tabNameField">
+                                    <div class="deleteField" onclick="deleteScreenshot(this)"></div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+        
+                        <!-- Edit DepictionTableTextView -->
+                        <div id="editDepictionTableTextView" style="display:none" class="alertContent">
+                            <p>Adds a table cell with a given value that is ideal for displaying the current version or release date of a tweak.</p>
+                            <div class="optionWrapper" style="width: calc(100% - 25px)">
+                                <div class="tooltip">The title of the row. (Left Side of Table)</div>
+                                <input placeholder="Table Title" type="text" class="titleField">
+                            </div>
+                            <div class="optionWrapper" style="width: calc(100% - 25px)">
+                                <div class="tooltip">The text to be displayed next to the title. (Right Side of Table)</div>
+                                <input placeholder="Table Title" type="text" class="textField">
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionTableButtonView -->
+                        <div id="editDepictionTableButtonView" style="display:none" class="alertContent">
+                            <p>Adds a table cell that opens a given URL or performs another action when tapped.</p>
+                            <input type="text" class="urlField" placeholder="https://the.location.of.your.link.com">
+                            <input placeholder="Button Text" type="text" class="textField">
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the padding (white space) above and below the table cell.</div>
+                                Vertical Padding
+                                <input type="number" class="yPadding" min="0" max="100" value=11> px
+                            </div>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Change the color of the button text.</div>
+                                <input placeholder="#000000" type="text" class="tableTintColorPicker">
+                            </div>
+                        </div>
+        
+                        <!-- Edit DepictionSpacerView -->
+                        <div id="editDepictionSpacerView" style="display:none" class="alertContent">
+                            <p>Adds a blank space of variable height.</p>
+                            <div class="optionWrapper">
+                                <div class="tooltip">Determine how tall the spacer should be.</div>
+                                Vertical Height
+                                <input type="number" class="spacing" min="0" max="1000" value=20>
+                            </div>
+                        </div>
+        
+                        <div id="alertButton" style="display:none">Save Changes</div>
+                    </div>
+                </div>
+                <!-- <button onClick="downloadConfig()">Download Depiction</button> -->
             </div>
             
             <div class="navbar">
@@ -48,6 +546,7 @@
                 </div>
             </div>
 
+            <img src="img/iX.png" id="iX">
             <div id="previewBox">
     
                 <div id="bannerWrapper" class="editableImage" onClick="editImage('bannerImage')">
@@ -65,494 +564,12 @@
                 <div class="headerPillSelector" style="visibility: hidden;">
                     <div id="pillSelectors"></div>
                     <div class="pillSelectorLine"></div>
-                    <div id="editTabsButton" class="editUI" onClick="editTabs()">Edit Tabs</div>
                 </div>
     
                 <div id="mainWrapper"></div>
             </div>
         </div>
 
-        <div id="alertContainer">
-            <div id="alertWindow">
-                <div id="alertErrors"></div>
-                <h1 id="alertHeader"></h1>
-                <h2 id="alertSubheader"></h1>
-
-                <!-- Edit Tabs -->
-                <div id="editTabsUI" style="display:none" class="alertContent">
-                    <p>Tabs are separate screens that are made up of views. 
-                        </br>They can be used to separate between more important data (such as a package’s name)
-                        and other supplemental information (such as a changelog).</p>
-                    <h3>Current Tabs:</h3>
-                    <div id="tabEditorTable"></div>
-                    <div id="addTabButton" onClick="addNewTab()">Add New Tab</div>
-                </div>
-
-                <!-- Edit Banner Image -->
-                <div id="editBannerUI" style="display:none" class="alertContent">
-                    <p>The URL of the image that should be displayed in the topmost header of the package page.</p>
-                    <p>Support all basic image formats such as jpg/png.</p>
-                    <input type="text" id="bannerUrlField" placeholder="https://the.location.of.your.image/image.png">
-                </div>
-
-                <!-- Add New View -->
-                <div id="addViewUI" style="display:none" class="alertContent">
-                    <div class="viewPreviewContainer" onClick="addView('DepictionHeaderView')">
-                        <!-- <div class="viewPreview" style="background-image: url('img/view-previews/DepictionHeaderView.svg')"></div> -->
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,99h-211c-4.4,0-8-3.6-8-8V59c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v32C238.5,95.4,234.9,99,230.5,99z"/>
-                            <path class="heading" d="M126,69H25c-2.7,0-5-2.3-5-5l0,0c0-2.8,2.2-5,5-5h101c2.7,0,5,2.2,5,5l0,0C131,66.8,128.8,69,126,69z"/>
-                        </svg>
-                        <h1>Heading</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionSubheaderView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,99h-211c-4.4,0-8-3.6-8-8V59c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v32C238.5,95.4,234.9,99,230.5,99z"/>
-                            <path class="subheading" d="M99,68H24c-2.2,0-4-1.8-4-4l0,0c0-2.2,1.8-4,4-4h75c2.2,0,4,1.8,4,4l0,0C103,66.2,101.2,68,99,68z"/>
-                        </svg>
-                        <h1>Subheading</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionLabelView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,87.5h-211c-4.4,0-8-3.6-8-8v-9c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v9
-                                    C238.5,83.9,234.9,87.5,230.5,87.5z"/>
-                            <path class="text" d="M57.5,77.5h-35c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h35c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C60,76.4,58.9,77.5,57.5,77.5z"/>
-                            <path class="text" d="M73.5,77.5h-8c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h8c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C76,76.4,74.9,77.5,73.5,77.5z"/>
-                            <path class="text" d="M96.5,77.5h-14c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h14c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C99,76.4,97.9,77.5,96.5,77.5z"/>
-                            <path class="text" d="M145.5,77.5h-40c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h40c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C148,76.4,146.9,77.5,145.5,77.5z"/>
-                        </svg>
-                        <h1>Label</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionMarkdownView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M226.5,13.5h-203c-6.6,0-12,5.4-12,12v99c0,6.6,5.4,12,12,12h203c6.6,0,12-5.4,12-12v-99
-                                C238.5,18.9,233.1,13.5,226.5,13.5z"/>
-                            <path class="heading" d="M124.5,33.7h-101c-2.7,0-5-2.3-5-5l0,0c0-2.8,2.2-5,5-5h101c2.7,0,5,2.2,5,5l0,0
-                                C129.5,31.5,127.3,33.7,124.5,33.7z"/>
-                            <path class="subheading" d="M98.5,46.7h-75c-2.2,0-4-1.8-4-4l0,0c0-2.2,1.8-4,4-4h75c2.2,0,4,1.8,4,4l0,0C102.5,44.9,100.7,46.7,98.5,46.7z
-                                "/>
-                            <path class="text" d="M207,58.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h185c1.4,0,2.5,1.1,2.5,2.5l0,0
-                            C209.5,57.6,208.4,58.7,207,58.7z"/>
-                            <path class="text" d="M179,68.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h157c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C181.5,67.6,180.4,68.7,179,68.7z"/>
-                            <path class="text" d="M195,78.7H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h173c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C197.5,77.6,196.4,78.7,195,78.7z"/>
-                            <path class="text" d="M201,113.5H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h179c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C203.5,112.4,202.4,113.5,201,113.5z"/>
-                            <path class="text" d="M119,123.5H22c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h97c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C121.5,122.4,120.4,123.5,119,123.5z"/>
-                            <path class="text" d="M65.4,88.7H34.5c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h30.9c1.4,0,2.5,1.1,2.5,2.5v0
-                                C67.9,87.5,66.8,88.7,65.4,88.7z"/>
-                            <path class="text" d="M71.5,95.8h-37c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h37c1.4,0,2.5,1.1,2.5,2.5v0
-                                C74,94.7,72.9,95.8,71.5,95.8z"/>
-                            <path class="text" d="M54.8,102.9H34.5c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h20.3c1.4,0,2.5,1.1,2.5,2.5v0
-                                C57.3,101.8,56.1,102.9,54.8,102.9z"/>
-                            <path class="subheading" d="M25.8,88.7L25.8,88.7c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
-                                C28.3,87.5,27.1,88.7,25.8,88.7z"/>
-                            <path class="subheading" d="M25.8,95.8L25.8,95.8c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
-                                C28.3,94.7,27.1,95.8,25.8,95.8z"/>
-                            <path class="subheading" d="M25.8,102.9L25.8,102.9c-1.4,0-2.5-1.1-2.5-2.5v0c0-1.4,1.1-2.5,2.5-2.5h0c1.4,0,2.5,1.1,2.5,2.5v0
-                                C28.3,101.8,27.1,102.9,25.8,102.9z"/>
-                        </svg>
-                        <h1>Markdown</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionImageView')">
-                        <svg version="1.1" id="imageViewPreview" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="st1" d="M220.7,119.8H29.6c-6.6,0-12-5.4-12-12V42.3c0-6.6,5.4-12,12-12h191.1c6.6,0,12,5.4,12,12v65.5
-                                C232.7,114.3,227.3,119.8,220.7,119.8z"/>
-                            <path class="st2" d="M30.4,97.7c-4.4,0-8.8,0.2-12.8,0.5v16.7c0,2.5,3.5,4.6,7.7,4.6h58.3c0.4-0.9,0.5-1.8,0.5-2.7
-                                C84.1,106.2,60.1,97.7,30.4,97.7z"/>
-                            <path class="st3" d="M147.5,92.4c-48,0-87.1,13.9-87.6,31.2h140C199.8,123.5,194.2,92.4,147.5,92.4z"/>
-                            <path class="st4" d="M168.4,118.3c0,0.5,65.4,0,65.4,0V95C256.3,68.6,168.4,107.7,168.4,118.3z"/>
-                            <g>
-                                <path class="box" d="M223.5,31.7c4.4,0,8,3.6,8,8v70.7c0,4.4-3.6,8-8,8h-197c-4.4,0-8-3.6-8-8V39.7c0-4.4,3.6-8,8-8H223.5
-                                    M223.5,21.7h-197c-9.9,0-18,8.1-18,18v70.7c0,9.9,8.1,18,18,18h197c9.9,0,18-8.1,18-18V39.7C241.5,29.7,233.4,21.7,223.5,21.7
-                                    L223.5,21.7z"/>
-                            </g>
-                            <circle class="st6" cx="59.9" cy="59.6" r="18.9"/>
-                        </svg>
-                        <h1>Image</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionScreenshotsView')">
-                        <svg version="1.1" id="screenshotsViewPreview" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M229.5,128.4h-209c-6.6,0-12-5.4-12-12V34c0-6.6,5.4-12,12-12h209c6.6,0,12,5.4,12,12v82.4
-                                C241.5,123,236.1,128.4,229.5,128.4z"/>
-                            <g>
-                                <g>
-                                    <path class="st2" d="M72.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                        C77.8,116.5,75.5,118.7,72.8,118.7z"/>
-                                    <circle class="st3" cx="34.4" cy="46" r="9.4"/>
-                                </g>
-                                <g>
-                                    <defs>
-                                        <path id="SVGID_2_" d="M72.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                            C77.8,116.5,75.5,118.7,72.8,118.7z"/>
-                                    </defs>
-                                    <clipPath id="SVGID_4_">
-                                        <use xlink:href="#SVGID_2_"  style="overflow:visible;"/>
-                                    </clipPath>
-                                    <path class="st4" d="M23.4,95.7c-2.7,0-5.3,0.2-7.8,0.5v16.7c0,2.5,2.1,4.6,4.7,4.6h35.4c0.2-0.9,0.3-1.8,0.3-2.7
-                                        C56,104.2,41.4,95.7,23.4,95.7z"/>
-                                    <path class="st5" d="M62.9,100.2c-23.2,0-42.1,9.5-42.3,21.3h67.6C88.2,121.5,85.5,100.2,62.9,100.2z"/>
-                                </g>
-                            </g>
-                            <path class="st6" d="M135.8,118.9h-48c-2.8,0-5-2.3-5-5V36.7c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                C140.8,116.7,138.5,118.9,135.8,118.9z"/>
-                            <path class="st7" d="M102.7,56.6C99,57.8,95,55.7,93.9,52s0.9-7.7,4.6-8.9c0.5-0.2,1.5-0.3,1.5-0.3s-2,4.6,0.2,7.2
-                                c2.2,2.5,6.9,2.7,6.9,2.7S104.8,56,102.7,56.6z"/>
-                            <path class="st8" d="M198.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                C203.8,116.5,201.5,118.7,198.8,118.7z"/>
-                            <circle class="st9" cx="161.5" cy="46.5" r="7.6"/>
-                            <g>
-                                <defs>
-                                    <path id="SVGID_3_" d="M198.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                        C203.8,116.5,201.5,118.7,198.8,118.7z"/>
-                                </defs>
-                                <clipPath id="SVGID_5_">
-                                    <use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
-                                </clipPath>
-                                <polygon class="st10" points="195.4,76.1 154.8,120.1 216.1,120.1 	"/>
-                                <polygon class="st11" points="161.1,91.5 181.9,120.3 133.4,120.3 	"/>
-                            </g>
-                            <g>
-                                <defs>
-                                    <rect id="SVGID_6_" x="208.8" y="31.7" width="21.5" height="91.2"/>
-                                </defs>
-                                <clipPath id="SVGID_7_">
-                                    <use xlink:href="#SVGID_6_"  style="overflow:visible;"/>
-                                </clipPath>
-                                <g class="st12">
-                                    <g>
-                                        <path class="st13" d="M261.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                            C266.8,116.5,264.5,118.7,261.8,118.7z"/>
-                                    </g>
-                                    <g>
-                                        <defs>
-                                            <path id="SVGID_1_" d="M261.8,118.7h-48c-2.8,0-5-2.3-5-5V36.5c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                                C266.8,116.5,264.5,118.7,261.8,118.7z"/>
-                                        </defs>
-                                        <clipPath id="SVGID_8_">
-                                            <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-                                        </clipPath>
-                                        <path class="st14" d="M212.4,95.7c-2.7,0-5.3,0.2-7.8,0.5v16.7c0,2.5,2.1,4.6,4.7,4.6h35.4c0.2-0.9,0.3-1.8,0.3-2.7
-                                            C245,104.2,230.4,95.7,212.4,95.7z"/>
-                                        <path class="st15" d="M251.9,100.2c-23.2,0-42.1,9.5-42.3,21.3h67.6C277.2,121.5,274.5,100.2,251.9,100.2z"/>
-                                    </g>
-                                </g>
-                                <ellipse class="st16" cx="229.8" cy="48" rx="9.1" ry="5.2"/>
-                                <path class="st17" d="M215,52.7"/>
-                                <path class="st17" d="M236.3,59.1l-6-0.2c-9.7-0.2-14.7-2.4-14.7-5.7v0c0-3.2,3.9-5.6,14.7-5.9h6c3.2,0,5.9,2.6,5.9,5.9v0
-                                    C242.2,56.5,239.5,59.1,236.3,59.1z"/>
-                            </g>
-                            <g>
-                                <defs>
-                                    <path id="SVGID_9_" d="M135.8,118.9h-48c-2.8,0-5-2.3-5-5V36.7c0-2.8,2.3-5,5-5h48c2.8,0,5,2.3,5,5v77.3
-                                        C140.8,116.7,138.5,118.9,135.8,118.9z"/>
-                                </defs>
-                                <clipPath id="SVGID_10_">
-                                    <use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
-                                </clipPath>
-                                <path class="st18" d="M78.6,118.7c0,0,13.1-33.4,19.3-33.7c5.4-0.2,18.5,21.9,18.5,21.9s6.9-8.7,11.3-8.7
-                                    c6.1,0,17.2,20.7,17.2,20.7L78.6,118.7z"/>
-                            </g>
-                            <circle class="st7" cx="105.9" cy="71.4" r="1.4"/>
-                            <circle class="st7" cx="130.3" cy="54.1" r="1.4"/>
-                            <circle class="st7" cx="118.8" cy="59.8" r="1"/>
-                            <circle class="st7" cx="126.1" cy="77.5" r="1.7"/>
-                            <circle class="st7" cx="87.8" cy="63.9" r="0.7"/>
-                            <circle class="st7" cx="118.5" cy="37.9" r="1.4"/>
-                            <circle class="st7" cx="134" cy="88.9" r="0.6"/>
-                        </svg>
-                        <h1>Screenshots</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionTableTextView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,88.6h-211c-4.4,0-8-3.6-8-8V69.4c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v11.3
-                                C238.5,85,234.9,88.6,230.5,88.6z"/>
-                            <path class="text" d="M90.4,72.5H22.9c-1.3,0-2.3,1.1-2.3,2.5l0,0c0,1.4,1,2.5,2.3,2.5h67.5c1.3,0,2.3-1.1,2.3-2.5l0,0
-                                C92.7,73.6,91.7,72.5,90.4,72.5z"/>
-                            <path class="subheading" d="M226.1,77.4h-31.6c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h31.6c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C228.6,76.3,227.5,77.4,226.1,77.4z"/>
-                            <line class="ultralight" x1="125" y1="65.7" x2="125" y2="85.3" style="stroke-linecap:round;stroke-miterlimit:10"/>
-                            <path class="subheading" d="M186.8,77.5h-19.9c-1.4,0-2.5-1.1-2.5-2.5l0,0c0-1.4,1.1-2.5,2.5-2.5h19.9c1.4,0,2.5,1.1,2.5,2.5l0,0
-                                C189.3,76.4,188.1,77.5,186.8,77.5z"/>
-                        </svg>
-                        <h1>Table Text</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionTableButtonView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                        <rect class="bg" width="250" height="150"/>
-                        <path class="box" d="M230.5,88.6h-211c-4.4,0-8-3.6-8-8V69.4c0-4.4,3.6-8,8-8h211c4.4,0,8,3.6,8,8v11.3
-                            C238.5,85,234.9,88.6,230.5,88.6z"/>
-                        <path class="tintText" d="M97.6,72.5H23.1c-1.4,0-2.5,1.1-2.5,2.5l0,0c0,1.4,1.1,2.5,2.5,2.5h74.5c1.4,0,2.5-1.1,2.5-2.5l0,0
-                            C100.1,73.6,99,72.5,97.6,72.5z"/>
-                        <g>
-                            <line class="tintText" x1="222" y1="69.6" x2="227.3" y2="74.9" style="stroke-width:3;stroke-linecap:round;stroke-miterlimit:10"/>
-                            <line class="tintText" x1="227.3" y1="74.9" x2="221.8" y2="80.4" style="stroke-width:3;stroke-linecap:round;stroke-miterlimit:10"/>
-                        </g>
-                        </svg>
-                        <h1>Table Button</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionSeparatorView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,48.1h-211c-4.4,0-8,3.6-8,8v37.8c0,4.4,3.6,8,8,8h211c4.4,0,8-3.6,8-8V56.1
-                                C238.5,51.7,234.9,48.1,230.5,48.1z"/>
-                            <g>
-                                <g>
-                                    <line class="st3" x1="30.6" y1="75" x2="223" y2="75"style="stroke:var(--text-color);opacity:.1;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:12.3756,7.2191"/>
-                                </g>
-                            </g>
-                        </svg>
-                        <h1>Separator</h1>
-                    </div>
-                    <div class="viewPreviewContainer" onClick="addView('DepictionSpacerView')">
-                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 250 150" style="enable-background:new 0 0 250 150;" xml:space="preserve">
-                            <rect class="bg" width="250" height="150"/>
-                            <path class="box" d="M230.5,41.2h-211c-4.4,0-8,4.5-8,10.1v47.5c0,5.5,3.6,10.1,8,10.1h211c4.4,0,8-4.5,8-10.1V51.2
-                                C238.5,45.7,234.9,41.2,230.5,41.2z"/>
-                            <g>
-                                <line class="st2" x1="125" y1="88.2" x2="125" y2="61.8" style="fill:none;stroke:var(--text-color);opacity:.1;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:5,5;"/>
-                                <line class="ultralight" x1="119" y1="57.6" x2="125" y2="51.8"/>
-                                <line class="ultralight" x1="131" y1="57.6" x2="125" y2="51.8"/>
-                                <line class="ultralight" x1="119" y1="92.4" x2="125" y2="98.2"/>
-                                <line class="ultralight" x1="131" y1="92.4" x2="125" y2="98.2"/>
-                            </g>
-                        </svg>
-                        <h1>Spacer</h1>
-                    </div>
-                </div>
-
-                <!-- Edit DepictionHeaderView -->
-                <div id="editDepictionHeaderView" style="display:none" class="alertContent">
-                    <p>Creates a large title intended for separating major sections of a given tab.</p>
-                    <div class="optionWrapper" style="width: calc(100% - 25px)">
-                        <div class="tooltip">The title text displayed within the header.</div>
-                        <input placeholder="Heading Title" type="text" class="titleField">
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Allow margins (white space) above & below the heading.</div>
-                        <label class="checkboxWrapper">
-                            Use Margins
-                            <input type="checkbox" class="useMargins" checked="checked">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Make the text bold.</div>
-                        <label class="checkboxWrapper">
-                            Bold Text
-                            <input type="checkbox" class="useBoldText" checked="checked" >
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the position of the text within the heading.</div>
-                        Text Alignment
-                        <select class="alignment">
-                            <option value="0">Left</option>
-                            <option value="1">Center</option>
-                            <option value="2">Right</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Edit DepictionSubheaderView -->
-                <div id="editDepictionSubheaderView" style="display:none" class="alertContent">
-                    <p>Subheaders are smaller headers.</p>
-                    <div class="optionWrapper" style="width: calc(100% - 25px)">
-                        <div class="tooltip">The title text displayed within the subheader.</div>
-                        <input placeholder="Subheading Title" type="text" class="titleField">
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Allow margins (white space) above & below the subheading.</div>
-                        <label class="checkboxWrapper">
-                            Use Margins
-                            <input type="checkbox" class="useMargins" checked="checked">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Make the text bold.</div>
-                        <label class="checkboxWrapper">
-                            Bold Text
-                            <input type="checkbox" class="useBoldText" checked="checked" >
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Edit DepictionlabelView -->
-                <div id="editDepictionLabelView" style="display:none" class="alertContent">
-                        <p>Labels are highly-customizable snippets of text with a customizable color.</p>
-                        <input placeholder="Label Text" type="text" class="textField">
-                        <div class="optionWrapper">
-                            <div class="tooltip">Allow margins (white space) above & below the label.</div>
-                            <label class="checkboxWrapper">
-                                Use Margins
-                                <input type="checkbox" class="useMargins" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="optionWrapper">
-                            <div class="tooltip">Add a slight margin to the top and bottom of the label.</div>
-                            <label class="checkboxWrapper">
-                                Use Padding
-                                <input type="checkbox" class="usePadding">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="optionWrapper">
-                            <div class="tooltip">Change the position of the text within the label.</div>
-                            Text Alignment
-                            <select class="alignment">
-                                <option value="0">Left</option>
-                                <option value="1">Center</option>
-                                <option value="2">Right</option>
-                            </select>
-                        </div>
-                        <div class="optionWrapper">
-                            <div class="tooltip">Change the weight (thickness) of text within the label.</div>
-                            Font Weight
-                            <select class="fontWeight">
-                                <option value="black" style="font-weight: 1000">Black</option>
-                                <option value="heavy" style="font-weight: 800">Heavy</option>
-                                <option value="bold" style="font-weight: bold">Bold</option>
-                                <option value="semibold" style="font-weight: 600">Semibold</option>
-                                <option value="regular" style="font-weight: regular" selected="selected">Regular</option>
-                                <option value="thin" style="font-weight: 200">Thin</option>
-                                <option value="ultralight" style="font-weight: 100">Ultralight</option>
-                            </select>
-                        </div>
-                        <div class="optionWrapper">
-                            <div class="tooltip">Change the size of text within the label.</div>
-                            Font Size
-                            <input type="number" class="fontSize" min="0" max="40" value=12>pt
-                        </div>
-                        <div class="optionWrapper">
-                            <div class="tooltip">Change the color of the label text.</div>
-                            <input placeholder="#000000" type="text" class="fontColor">
-                        </div>
-                </div>
-
-                <!-- Edit DepictionMarkdownView -->
-                <div id="editDepictionMarkdownView" style="display:none">
-                    <p>Allows for basic Markdown or HTML to be displayed, ideal for large blocks of text. 
-                        Learn more about markdown <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">here</a>.</p>
-                        <input id="markdownTextField">
-                </div>
-
-                <!-- Edit DepictionImageView -->
-                <div id="editDepictionImageView" style="display:none" class="alertContent">
-                    <p>Renders an image inside the depiction. Recommended for use in displaying logos or other small images NOT screenshots.</p>
-                    <p>Supports all basic image formats such as jpg/png.</p>
-                    <div class="optionWrapper" style="width: calc(100% - 25px)">
-                        <div class="tooltip">The URL of the image you want to show.</div>
-                        <input placeholder="https://the.location.of.your.image/image.png" type="text" class="urlField">
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the width of the image.</div>
-                        Width
-                        <input type="number" class="widthSlider" min="1" max="200" value=40> px
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the height of the image.</div>
-                        Height
-                        <input type="number" class="heightSlider" min="1" max="200" value=40> px
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the corner roundness of the image.</div>
-                        Corner Radius
-                        <input type="number" class="cornerRadiusSlider" min="0" max="100" value=5>
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the horizontal position of the image within the view.</div>
-                        Image Alignment
-                        <select class="alignment">
-                            <option value="0">Left</option>
-                            <option value="1" selected>Center</option>
-                            <option value="2">Right</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Edit DepictionScreenshotsView -->
-                <div id="editDepictionScreenshotsView" style="display:none" class="alertContent">
-                    <p>Displays a screenshot carousel with provided images.</p>
-                    <p>Support all basic image formats such as jpg/png.</p>
-                    <!--
-                    <div class="editScreenshotArray">
-                        <div class="tabEditorCell">
-                            <input type="text" placeholder="https://location.of.your.image/image.png" class="tabNameField">
-                            <div class="deleteField" onclick="deleteScreenshot(this)"></div>
-                        </div>
-                    </div>
-                    -->
-                </div>
-
-                <!-- Edit DepictionTableTextView -->
-                <div id="editDepictionTableTextView" style="display:none" class="alertContent">
-                    <p>Adds a table cell with a given value that is ideal for displaying the current version or release date of a tweak.</p>
-                    <div class="optionWrapper" style="width: calc(100% - 25px)">
-                        <div class="tooltip">The title of the row. (Left Side of Table)</div>
-                        <input placeholder="Table Title" type="text" class="titleField">
-                    </div>
-                    <div class="optionWrapper" style="width: calc(100% - 25px)">
-                        <div class="tooltip">The text to be displayed next to the title. (Right Side of Table)</div>
-                        <input placeholder="Table Title" type="text" class="textField">
-                    </div>
-                </div>
-
-                <!-- Edit DepictionTableButtonView -->
-                <div id="editDepictionTableButtonView" style="display:none" class="alertContent">
-                    <p>Adds a table cell that opens a given URL or performs another action when tapped.</p>
-                    <input type="text" class="urlField" placeholder="https://the.location.of.your.link.com">
-                    <input placeholder="Button Text" type="text" class="textField">
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the padding (white space) above and below the table cell.</div>
-                        Vertical Padding
-                        <input type="number" class="yPadding" min="0" max="100" value=11> px
-                    </div>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Change the color of the button text.</div>
-                        <input placeholder="#000000" type="text" class="tableTintColorPicker">
-                    </div>
-                </div>
-
-                <!-- Edit DepictionSpacerView -->
-                <div id="editDepictionSpacerView" style="display:none" class="alertContent">
-                    <p>Adds a blank space of variable height.</p>
-                    <div class="optionWrapper">
-                        <div class="tooltip">Determine how tall the spacer should be.</div>
-                        Vertical Height
-                        <input type="number" class="spacing" min="0" max="1000" value=20>
-                    </div>
-                </div>
-
-                <div id="alertButton" style="display:none">Save Changes</div>
-            </div>
-        </div>
     </body>
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <script src='js/color-picker.js'></script>

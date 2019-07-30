@@ -1,36 +1,3 @@
-// Class Added to body to toggle alert
-.alertVisible {
-    #alertWindow {
-        animation: popAlert 0.6s ease;
-    }
-    #everythingWrapper {
-        filter: blur(4px);
-    }
-    #alertContainer {
-        display: inline;
-        opacity: 1;
-    }
-}
-
-// Pop animation for alert window
-@keyframes popAlert {
-    from {
-        transform: translate(-50%, -50%) scale(0);
-    }
-    60% {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-    75% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    90% {
-        transform: translate(-50%, -50%) scale(1.05);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-}
-
 // Switch page for alert window
 @keyframes switchAlertPage {
     50% {
@@ -50,53 +17,58 @@
     animation: switchAlertPage 0.6s ease !important;
 }
 
-// Black Background behind Alert
+// Main Alert Window
 #alertContainer {
-    overflow: hidden;
-    display: none;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    width: calc(100% - 45px);
+    height: calc(100% - 230px);
     position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.75);
-    transition: opacity 0.35s ease;
-    -webkit-transition: opacity 0.35s ease;
-    -moz-transition: opacity 0.35s ease;
-    -o-transition: opacity 0.35s ease;
-    -ms-transition: opacity 0.35s ease;
+    bottom: 20px;
+    left: 20px;
+    padding: 14px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-// Main Alert Window
 #alertWindow {
-    max-height: calc(100% - 150px);
-    overflow-y: scroll;
-    width: calc(100% - 20px);
-    max-width: 1000px;
-    border-radius: 15px;
-    padding: 20px;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    padding-right: 8px;
     box-sizing: border-box;
-    background-color: var(--bg-color);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
-    #alertHeader {
-        font-size: 24pt;
-        margin-top: 0;
-        margin-bottom: 5px;
+    &::-webkit-scrollbar {
+        width: 6px;
     }
-    #alertSubheader {
-        margin-top: 0;
-        font-size: 16pt;
+    &::-webkit-scrollbar-track {
+        background: var(--scrollbar-color);
+        border-radius: 25px;
     }
+    &::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-track-color);
+        border-radius: 25px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-track-hover-color);
+    }
+
+    h1 {
+        font-size: 20pt;
+    }
+    h2 {
+        font-size: 18pt;
+    }
+
     h1, h2, h3, p, #alertButton, .alertError, .optionWrapper input, .checkmark, .tooltip, .optionWrapper, .alertContent, input[type=text], .tabEditorCell {
+        color: var(--text-color);
         margin: 8px auto;
         max-width: 600px;
         text-align: center;
     }
+
     #alertButton {
         cursor: pointer;
         margin-top: 40px;
