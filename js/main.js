@@ -10,6 +10,9 @@ var config =
     ]
 }
 
+// Variable that stores a backup of the config (allow for cancel buttons)
+var backupConfig
+
 // Variable that stores which tab the user is currently in
 var currentViewingTab = 0
 

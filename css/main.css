@@ -244,25 +244,26 @@
 
 @keyframes switchAlertPage {
   50% {
-    transform: translateX(-100%);
+    transform: translate(-150%, -50%);
     opacity: 0; }
   51% {
-    transform: translateX(100%);
+    transform: translate(150%, -50%);
     opacity: 0; }
   to {
-    transform: translateX(0%);
+    transform: translate(-50%, -50%);
     opacity: 1; } }
 
 .switchAlertPage {
   animation: switchAlertPage 0.6s ease !important; }
 
 #alertContainer {
+  position: relative;
   color: var(--text-color);
   background-color: var(--bg-color);
   width: calc(100% - 45px);
-  height: calc(100% - 230px);
+  height: calc(100% - 300px);
   position: absolute;
-  bottom: 20px;
+  bottom: 90px;
   left: 20px;
   padding: 14px;
   box-sizing: border-box;
@@ -270,10 +271,41 @@
   overflow: hidden;
   margin-top: 20px; }
 
+.alertButton {
+  box-sizing: border-box;
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  cursor: pointer;
+  margin-top: 40px;
+  width: calc(50% - 40px);
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  font-size: 12pt;
+  color: #5a81ba;
+  background-color: var(--bg-color); }
+  .alertButton::hover {
+    opacity: .85; }
+  .alertButton.cancelButton {
+    background-color: #fe504f;
+    left: calc(50% + 15px);
+    color: white; }
+
 #alertWindow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   overflow-y: auto;
+  max-height: 100%;
   width: 100%;
-  height: 100%;
   padding-right: 8px;
   box-sizing: border-box; }
   #alertWindow::-webkit-scrollbar {
@@ -290,26 +322,11 @@
     font-size: 20pt; }
   #alertWindow h2 {
     font-size: 18pt; }
-  #alertWindow h1, #alertWindow h2, #alertWindow h3, #alertWindow p, #alertWindow #alertButton, #alertWindow .alertError, #alertWindow .optionWrapper input, #alertWindow .checkmark, #alertWindow .tooltip, #alertWindow .optionWrapper, #alertWindow .alertContent, #alertWindow input[type=text], #alertWindow .tabEditorCell {
+  #alertWindow h1, #alertWindow h2, #alertWindow h3, #alertWindow p, #alertWindow .alertError, #alertWindow .optionWrapper input, #alertWindow .checkmark, #alertWindow .tooltip, #alertWindow .optionWrapper, #alertWindow .alertContent, #alertWindow input[type=text], #alertWindow .tabEditorCell {
     color: var(--text-color);
     margin: 8px auto;
     max-width: 600px;
     text-align: center; }
-  #alertWindow #alertButton {
-    cursor: pointer;
-    margin-top: 40px;
-    max-width: 300px;
-    width: 100%;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    padding: 14px;
-    font-weight: 600;
-    font-size: 11pt;
-    color: white;
-    background-color: var(--tint-color); }
-  #alertWindow #alertButton:hover {
-    opacity: .85; }
   #alertWindow p {
     margin-top: 20px;
     margin-bottom: 20px; }

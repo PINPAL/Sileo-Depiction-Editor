@@ -33,7 +33,7 @@ function editTabs() {
     )
     // Focus Tabs in Preview
     document.getElementById("previewElementFocuser").style.display = "inline"
-    document.getElementsByClassName("headerPillSelector")[0].classList.add("focued")
+    document.getElementsByClassName("headerPillSelector")[0].classList.add("focused")
 }
 
 // Function called when user clicks "Tint Color" button
@@ -44,6 +44,13 @@ function editTintColor() {
         "editTintColorUI",
         null
     )
+}
+
+// Function called when user clicks any "cancel" button
+function cancelChanges() {
+    config = backupConfig
+    renderSileoDepiction(config)
+    hideAlert()
 }
 
 // Function called by buttons that toggle dark mode on/off

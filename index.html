@@ -28,6 +28,8 @@
                     <div class="sidebarButton" onClick="toggleEditUI(this)" style="background-image: url('img/previewMode.svg')">Preview Mode</div>
                     <div class="seperator"></div>
                     <div class="sidebarButton" id="darkModeButton" onClick="toggleDarkMode(this)" style="background-image: url('img/darkMode.svg')">Dark Mode</div>
+                    <!-- <div class="seperator"></div>
+                    <div class="sidebarButton" onClick="downloadConfig()" style="background-image: url('img/download.svg')">Download Depiction</div> -->
                 </div>
                 <h1 id="alertHeader">Welcome</h1>
                 <h2 id="alertSubheader">Sileo Depiction Generator</h1>
@@ -37,7 +39,7 @@
 
                         <!-- Welcome Message -->
                         <div id="welcomeMessage" class="alertContent">
-                            <img src="https://pinpal.github.io/Sileo-Depiction-WebViews/assets/icon.png" width=100px height=100px>
+                            <img src="https://pinpal.github.io/Sileo-Depiction-WebViews/assets/icon.png" width=80px height=80px>
                             <h1>Welcome to the Sileo Depiction Generator</h1>
                             <h2>Create Depictions the easy way!</h2>
                             <p>Using this simple and easy to use editor you can arrange, delete and add sections to the depiction, edit tint colors, change images,
@@ -527,11 +529,12 @@
                                 <input type="number" class="spacing" min="0" max="1000" value=20>
                             </div>
                         </div>
-        
-                        <div id="alertButton" style="display:none">Save Changes</div>
                     </div>
                 </div>
-                <!-- <button onClick="downloadConfig()">Download Depiction</button> -->
+                <div id="alertButtonContainer" style="display: none">
+                    <div class="alertButton" id="saveButton" onClick="">Save Changes</div>
+                    <div class="alertButton cancelButton" onClick="cancelChanges()">Cancel</div>
+                </div>
             </div>
             
             <div class="navbar">

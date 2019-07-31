@@ -13,7 +13,7 @@ function displayError(error) {
 
 // Function to hide alert 
 function hideAlert() {
-    document.getElementById("alertButton").style.display = "none"
+    document.getElementById("alertButtonContainer").style.display = "none"
     document.getElementById("alertWindow").classList.remove("switchAlertPage")
     document.getElementById("alertErrors").innerHTML = ""
     // Bring back Welcome UI
@@ -48,9 +48,9 @@ function clearAlertContent() {
         document.getElementById(hiddenIDs[i]).style.display = "none"
     }
     // Unfocus focussed content
-    var focuedElements = document.getElementsByClassName("focused")
-    for (i=0; i<focuedElements.length; i++) {
-        focuedElements[i].classList.remove("focused")
+    var focusedElements = document.getElementsByClassName("focused")
+    for (i=0; i<focusedElements.length; i++) {
+        focusedElements[i].classList.remove("focused")
     }
     // Hide Focus Window
     document.getElementById("previewElementFocuser").style.display = "none"
@@ -65,14 +65,16 @@ function switchAlertPage(headerString, subheaderString, contentType, saveEvent) 
 
 // Function to create an alert
 function createAlert(headerString,subheaderString,contentType,saveEvent) {
+    // Backup Config
+    backupConfig = config
     // Hide old content
     clearAlertContent()
     // Update Alert
     document.getElementById("alertHeader").innerText = headerString
     document.getElementById("alertSubheader").innerText = subheaderString
     if (saveEvent != null) {
-        document.getElementById("alertButton").style.display = "block"
-        document.getElementById("alertButton").setAttribute("onClick",saveEvent)
+        document.getElementById("alertButtonContainer").style.display = "block"
+        document.getElementById("saveButton").setAttribute("onClick",saveEvent)
     }
     if (contentType == "editTabUI") {
         // Show correct content
