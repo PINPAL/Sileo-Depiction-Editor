@@ -27,7 +27,7 @@ function hideAlert() {
 
 // Hide old alert content
 function clearAlertContent() {
-    let hiddenIDs = [
+    var hiddenIDs = [
         "welcomeMessage",
         "editTabsUI",
         "editBannerUI",
@@ -73,8 +73,10 @@ function createAlert(headerString,subheaderString,contentType,saveEvent) {
     document.getElementById("alertHeader").innerText = headerString
     document.getElementById("alertSubheader").innerText = subheaderString
     if (saveEvent != null) {
-        document.getElementById("alertButtonContainer").style.display = "block"
+        document.getElementById("alertButtonContainer").style.display = "table-row"
         document.getElementById("saveButton").setAttribute("onClick",saveEvent)
+    } else {
+        document.getElementById("alertButtonContainer").style.display = "none"
     }
     if (contentType == "editTabUI") {
         // Show correct content

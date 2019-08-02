@@ -55,7 +55,7 @@ function cancelChanges() {
 
 // Function called by buttons that toggle dark mode on/off
 function toggleDarkMode(element) {
-    let darkModeStatus = getCookie("enableDarkMode")
+    var darkModeStatus = getCookie("enableDarkMode")
     if (darkModeStatus) {
         element.innerText = "Dark Mode"
         setCookie("enableDarkMode",false)

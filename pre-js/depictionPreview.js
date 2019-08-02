@@ -21,8 +21,8 @@ function changePillSelector(element) {
 }
 
 // Define Navbar Items (Improve Scrolling Animation Responsiveness)
-const navbar = document.getElementsByClassName("navbar")[0]
-const changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
+var navbar = document.getElementsByClassName("navbar")[0]
+var changedNavbarItems = document.getElementsByClassName("changedNavbarItems")[0]
 
 // Navbar & Banner Scrolling Animation
 document.getElementById("previewBox").addEventListener('scroll', function updateNavbar() {

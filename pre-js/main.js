@@ -107,8 +107,8 @@ function downloadConfig() {
 
 // Function to return node index within a classname
 function indexInClass(node) {
-    let elementsInClass = document.getElementsByClassName(node.className)
-    let num = 0;
+    var elementsInClass = document.getElementsByClassName(node.className)
+    var num = 0;
     for (var i = 0; i < elementsInClass.length; i++) {
       if (elementsInClass[i] === node) {
         return num;

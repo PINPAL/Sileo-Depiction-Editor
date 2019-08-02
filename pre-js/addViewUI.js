@@ -1,6 +1,6 @@
 // Function called when user picks a view to add
 function addView(type) {
-    let typeName = type.replace(/(Depiction)|(View)/g,"")
+    var typeName = type.replace(/(Depiction)|(View)/g,"");
     if (typeName == "Separator") {
         saveNewView("DepictionSeparatorView")
     } else {
@@ -22,8 +22,8 @@ var simplemde = new SimpleMDE({
 
 // Function called when user saves changes on addNewViewUI
 function saveNewView(type) {
-    let view = {"class":type}
-    let editUI = document.getElementById("edit" + type)
+    var view = {"class":type}
+    var editUI = document.getElementById("edit" + type)
     // Handle View
     switch (type) {
 
