@@ -193,33 +193,45 @@
     width: 125px;
     float: left; }
   #sidebar #sidebarButtons {
-    float: right; }
+    padding-bottom: 5px;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    height: 45px;
+    white-space: nowrap; }
     #sidebar #sidebarButtons div {
-      white-space: nowrap;
       float: right;
+      white-space: nowrap;
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none; }
-    #sidebar #sidebarButtons .seperator {
-      width: 4px;
-      background-color: rgba(255, 255, 255, 0.3);
-      height: 42px;
-      border-radius: 100px; }
     #sidebar #sidebarButtons .sidebarButton {
+      overflow: hidden;
+      height: 42px;
+      line-height: 42px;
       cursor: pointer;
       box-sizing: border-box;
-      font-size: 12pt;
+      font-size: 0;
       font-weight: 600;
-      margin: auto 5px;
-      padding: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
       padding-left: 45px;
-      color: white;
+      padding-right: 0;
+      color: rgba(0, 0, 0, 0);
       background-repeat: no-repeat;
       background-size: 27px;
       background-position: 10px center;
-      border-radius: 10px; }
+      border-radius: 10px;
+      transition: font-size 0.3s ease, padding-right 0.3s ease, color 0.3s ease;
+      -webkit-transition: font-size 0.3s ease, padding-right 0.3s ease, color 0.3s ease;
+      -moz-transition: font-size 0.3s ease, padding-right 0.3s ease, color 0.3s ease;
+      -o-transition: font-size 0.3s ease, padding-right 0.3s ease, color 0.3s ease;
+      -ms-transition: font-size 0.3s ease, padding-right 0.3s ease, color 0.3s ease; }
       #sidebar #sidebarButtons .sidebarButton:hover {
+        color: white;
+        font-size: 12pt;
+        padding-right: 10px;
         background-color: rgba(255, 255, 255, 0.2); }
   #sidebar h1 {
     font-size: 36pt;
@@ -245,13 +257,13 @@
 
 @keyframes switchAlertPage {
   50% {
-    transform: translate(-150%, -50%);
+    transform: translate(-100%, -50%);
     opacity: 0; }
   51% {
-    transform: translate(150%, -50%);
+    transform: translate(100%, -50%);
     opacity: 0; }
   to {
-    transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
     opacity: 1; } }
 
 .switchAlertPage {
@@ -306,11 +318,11 @@
 #alertWindow {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  transform: translateY(-50%);
   overflow-y: auto;
-  max-height: 100%;
-  width: 100%;
+  max-height: calc(100% - 24px);
+  width: calc(100% - 14px);
   padding-right: 8px;
   box-sizing: border-box; }
   #alertWindow::-webkit-scrollbar {
