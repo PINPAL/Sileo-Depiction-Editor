@@ -44,7 +44,7 @@ function updateTabEditUI() {
 function deleteTab(element) {
     // Delete Tab
     config.tabs.splice(
-        indexInClass(element), // Find which tab index user is deleting
+        indexInClass(element, document), // Find which tab index user is deleting
         1 // Delete just one
     )
     // Delete Tab Editor Cell

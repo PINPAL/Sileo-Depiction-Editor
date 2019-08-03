@@ -11,7 +11,7 @@ function changePillSelector(element) {
         tabContents[i].style.display = "none"
     }
     // Set currentTab
-    currentViewingTab = indexInClass(element)
+    currentViewingTab = indexInClass(element, document)
     // Move Pill Selector Line
     document.getElementsByClassName("pillSelectorLine")[0].style.left = element.style.left
     // Set Color of Selected Pill text 

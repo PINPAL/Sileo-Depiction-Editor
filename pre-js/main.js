@@ -63,9 +63,15 @@ function renderSileoDepiction(config) {
         tabContent.appendChild(addButton)
         // Add Content Views to Tab
         for (currentViewNum = 0; currentViewNum < config.tabs[currentTab].views.length; currentViewNum++) {
+            // Create ViewWrapper
+            var viewWrapper = document.createElement("div")
+            viewWrapper.className = "DepictionView"
+            viewWrapper.setAttribute("onClick","editView(this)")
             // Handle View
             var view = handleView(config.tabs[currentTab].views[currentViewNum], false)
-            tabContent.appendChild(view)
+            // Append View to ViewWrapper and then append to content
+            viewWrapper.appendChild(view)
+            tabContent.appendChild(viewWrapper)
             // Create Editor Add View Button
             var addButton = document.createElement("div")
             addButton.innerHTML = "Your View Here<div></div>"
@@ -106,8 +112,8 @@ function downloadConfig() {
 }
 
 // Function to return node index within a classname
-function indexInClass(node) {
-    var elementsInClass = document.getElementsByClassName(node.className)
+function indexInClass(node, parent) {
+    var elementsInClass = parent.getElementsByClassName(node.className)
     var num = 0;
     for (var i = 0; i < elementsInClass.length; i++) {
       if (elementsInClass[i] === node) {

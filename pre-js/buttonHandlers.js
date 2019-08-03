@@ -1,7 +1,7 @@
 // Function called when user clicks "Add View" button
 var newViewIndex
 function callAddViewUI(element) {
-    newViewIndex = indexInClass(element)
+    newViewIndex = indexInClass(element, document.getElementsByClassName("tabContent")[currentViewingTab])
     createAlert(
         "Add View",
         "Add Section to " + element.parentElement.id.slice(0,-7),
@@ -21,6 +21,25 @@ function editImage(imageForEditing) {
                 "editImageUI",
                 "saveBanner()"
     )
+}
+
+
+
+// Function called when user clicks "Edit View" button 
+function editView(element) {
+    var viewIndex = indexInClass(element, document.getElementsByClassName("tabContent")[currentViewingTab])
+    var currentView = config.tabs[currentViewingTab].views[viewIndex]
+    var type = currentView.class
+    var typeName = type.replace(/(Depiction)|(View)/g,"");
+    createAlert(
+        "Edit " + typeName,
+        "Customize " + typeName + " Content",
+        "edit" + type,
+        "alert('sorry no work yet')"
+    )
+    // Focus View Position
+    document.getElementById("previewElementFocuser").style.display = "inline"
+    element.classList.add("focused")
 }
 
 // Function called when user clicks "Add Tab" button

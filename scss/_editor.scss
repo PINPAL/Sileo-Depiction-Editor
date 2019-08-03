@@ -149,6 +149,58 @@
     padding-left: 15px;
 }
 
+// Wrapper around all views in preview
+.DepictionView {
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    cursor: pointer;
+    border-radius: 5px;
+    width: calc(100% - 15px);
+    border-color: rgba(0,0,0,0);
+    border-width: 2px;
+    border-style: dashed;
+    border-top-style: none;
+    transition: border-color 0.3s ease;
+        -webkit-transition: border-color 0.3s ease;
+        -moz-transition: border-color 0.3s ease;
+        -o-transition: border-color 0.3s ease;
+        -ms-transition: border-color 0.3s ease;
+
+    &:before {
+        border-radius: 5px 5px 0 0;
+        margin-left: -2px;
+        width: calc(100% + 4px);
+        color: var(--bg-color);
+        font-size: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: block;
+        content:"Edit View";
+        text-align: center;
+        transition: background-color 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+            -webkit-transition: background-color 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+            -moz-transition: background-color 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+            -o-transition: background-color 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+            -ms-transition: background-color 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+    }
+
+    &.focused {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:hover, &.focused {
+        border-color: var(--tint-color);
+        &:before {
+            background-color: var(--tint-color);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 12pt;
+        }
+    }
+}
+
 // Add View Button
 .addViewButton {
     color: rgba(0,0,0,0);
