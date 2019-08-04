@@ -733,6 +733,16 @@
     .numberInput button.plus:after {
       transform: translate(-50%, -50%) rotate(90deg); }
 
+select {
+  margin-left: 5px;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border: none;
+  padding: 5px;
+  font-size: 12pt;
+  border-radius: 5px;
+  outline: none; }
+
 .hideEditUI .editUI {
   display: none; }
 

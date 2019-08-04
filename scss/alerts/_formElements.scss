@@ -127,3 +127,14 @@
         }
     }
 }
+
+select {
+    margin-left: 5px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: none;
+    padding: 5px;
+    font-size: 12pt;
+    border-radius: 5px;
+    outline: none;
+}
