@@ -404,7 +404,7 @@
     line-height: 50px;
     width: calc(50% - 20px);
     box-sizing: border-box;
-    background-color: var(--dark-ui-color);
+    background-color: var(--darker-ui-color);
     border-radius: 10px;
     display: inline-block;
     margin-bottom: 12px;
@@ -436,11 +436,12 @@
       left: -2px;
       opacity: 0;
       visibility: hidden;
-      transition: transform 0.15s ease, opacity 0.35s ease;
-      -webkit-transition: transform 0.15s ease, opacity 0.35s ease;
-      -moz-transition: transform 0.15s ease, opacity 0.35s ease;
-      -o-transition: transform 0.15s ease, opacity 0.35s ease;
-      -ms-transition: transform 0.15s ease, opacity 0.35s ease; }
+      transform: translateY(-25%);
+      transition: transform 0.15s ease, opacity 0.25s ease;
+      -webkit-transition: transform 0.15s ease, opacity 0.25s ease;
+      -moz-transition: transform 0.15s ease, opacity 0.25s ease;
+      -o-transition: transform 0.15s ease, opacity 0.25s ease;
+      -ms-transition: transform 0.15s ease, opacity 0.25s ease; }
     #alertWindow .optionWrapper:hover {
       border-color: var(--tint-color);
       border-radius: 0 0 10px 10px; }
@@ -688,7 +689,7 @@
   display: inline-flex; }
   .numberInput input[type=number] {
     background-color: var(--bg-color);
-    border: solid 1px var(--border-color);
+    border: none;
     border-radius: 5px;
     width: calc(100% - 75px);
     padding: 5px;
@@ -734,10 +735,10 @@
       transform: translate(-50%, -50%) rotate(90deg); }
 
 select {
+  border: none;
   margin-left: 5px;
   color: var(--text-color);
   background-color: var(--bg-color);
-  border: none;
   padding: 5px;
   font-size: 12pt;
   border-radius: 5px;
@@ -749,8 +750,8 @@ select {
 html {
   --bg-shape-color: #d6e7f2;
   --body-bg-color: #f8f9fa;
-  --dark-ui-color: rgb(206,206,206);
-  --darker-ui-color: rgba(0,0,0,.2);
+  --dark-ui-color: rgba(0,0,0,.05);
+  --darker-ui-color: rgba(0,0,0,.12);
   --sidebarTableCellBg: rgba(0,0,0,.03);
   --editor-border-color: rgb(223, 223, 223);
   --scrollbar-color: rgb(0,0,0,.1);
@@ -762,7 +763,7 @@ html {
 .darkMode {
   --bg-shape-color: #262636;
   --body-bg-color: #1e1e1f;
-  --dark-ui-color: rgb(29,29,29);
+  --dark-ui-color: rgba(0,0,0,.15);
   --darker-ui-color: rgba(0,0,0,.4);
   --sidebarTableCellBg: rgba(0,0,0,.08);
   --editor-border-color: #262629;
@@ -798,11 +799,8 @@ body {
   left: 0; }
 
 input[type=text] {
-  border-color: #dfdfdf;
-  border-style: solid;
-  border-width: 1px;
   font-size: 12pt;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-ui-color);
   outline: none !important;
   display: block;
   text-align: left;
@@ -814,4 +812,5 @@ input[type=text] {
   padding-right: 30px;
   box-sizing: border-box;
   border-radius: 10px;
-  width: calc(100% - 70px); }
+  height: 50px;
+  width: calc(100% - 25px); }
