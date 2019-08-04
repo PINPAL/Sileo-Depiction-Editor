@@ -5,7 +5,7 @@ var config =
     "tabs": [
         {
             "tabname":"Tab Name",
-            "views":[]
+            "views":[{"class":"DepictionLabelView","text":"Label Text","alignment":"0","useMargins":true,"usePadding":false,"fontWeight":"regular","fontSize":"12"}]
         }
     ]
 }

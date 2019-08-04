@@ -428,7 +428,11 @@
                                     <div class="optionWrapper">
                                         <div class="tooltip">Change the size of text within the label.</div>
                                         Font Size
-                                        <input type="number" class="fontSize" min="0" max="40" value=12>pt
+                                        <div class="numberInput">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                            <input type="number" class="fontSize" min="0" max="40" value=12>
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                        </div>
                                     </div>
                                     <div class="optionWrapper">
                                         <div class="tooltip">Change the color of the label text.</div>
@@ -454,17 +458,29 @@
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the width of the image.</div>
                                     Width
-                                    <input type="number" class="widthSlider" min="1" max="200" value=40> px
+                                    <div class="numberInput">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                        <input type="number" class="widthSlider" min="1" max="200" value=40>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
                                 </div>
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the height of the image.</div>
                                     Height
-                                    <input type="number" class="heightSlider" min="1" max="200" value=40> px
+                                    <div class="numberInput">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                        <input type="number" class="heightSlider" min="1" max="200" value=40>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
                                 </div>
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the corner roundness of the image.</div>
                                     Corner Radius
-                                    <input type="number" class="cornerRadiusSlider" min="0" max="100" value=5>
+                                    <div class="numberInput">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                        <input type="number" class="cornerRadiusSlider" min="0" max="100" value=5>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
                                 </div>
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the horizontal position of the image within the view.</div>
@@ -512,7 +528,11 @@
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the padding (white space) above and below the table cell.</div>
                                     Vertical Padding
-                                    <input type="number" class="yPadding" min="0" max="100" value=11> px
+                                    <div class="numberInput">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                        <input type="number" class="yPadding" min="0" max="100" value=11>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
                                 </div>
                                 <div class="optionWrapper">
                                     <div class="tooltip">Change the color of the button text.</div>
@@ -526,7 +546,11 @@
                                 <div class="optionWrapper">
                                     <div class="tooltip">Determine how tall the spacer should be.</div>
                                     Vertical Height
-                                    <input type="number" class="spacing" min="0" max="1000" value=20>
+                                    <div class="numberInput">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" ></button>
+                                        <input type="number" class="spacing" min="0" max="1000" value=20>
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -583,7 +607,7 @@
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/global.js"></script>
     <script src="https://pinpal.github.io/Sileo-Depiction-WebViews/viewHandler.js"></script>
 
-    <!-- Old Scripts-->
+    <!-- Old Scripts -->
     <script src='pre-js/color-picker.js'></script>
     <script src='pre-js/initialiseColorPickers.js'></script>
     <script src="pre-js/depictionPreview.js"></script>
@@ -593,7 +617,7 @@
     <script src="pre-js/editBannerUI.js"></script>
     <script src="pre-js/editTabsUI.js"></script>
     <script src="pre-js/main.js"></script>
-
+        
     <!-- 
     New Script (Replace Once Complete)
     <script src='js/main.min.js'></script> 
