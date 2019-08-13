@@ -20,8 +20,8 @@
     overflow-x: visible;
     overflow-y: scroll;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05), -10px -10px 15px rgba(0, 0, 0, 0.05);
-    width: calc((100vh - 200px)/2.16);
-    height: calc(100vh - 150px);
+    width: calc(((100vh - 105px)/2.11) - 50px);
+    height: calc((100vh - 105px) - 50px);
     background-color: var(--bg-color);
     position: absolute;
     top: 50%;
