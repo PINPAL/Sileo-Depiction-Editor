@@ -1,3 +1,5 @@
+
+// Default Config
 var config =
 {
     "class": "DepictionTabView",
@@ -5,9 +7,16 @@ var config =
     "tabs": [
         {
             "tabname":"Tab Name",
-            "views":[{"class":"DepictionLabelView","text":"Label Text","alignment":"0","useMargins":true,"usePadding":false,"fontWeight":"regular","fontSize":"12"}]
+            "views":[]
         }
     ]
+}
+
+// Load old config if user accidently reloaded the page
+if (getCookie("currentEditingConfig")) {
+    if (confirm("Looks like you have a project you were already working on, would you like to load it?")) {
+        config = JSON.parse(getCookie("currentEditingConfig"))
+    }
 }
 
 // Variable that stores a backup of the config (allow for cancel buttons)
@@ -95,6 +104,8 @@ function renderSileoDepiction(config) {
     }
     // Initial Styling of Pill Selector (Switch to the currently being viewed tab)
     changePillSelector(document.getElementsByClassName("pillText")[currentViewingTab])
+    // Save config to cookie
+    setCookie("currentEditingConfig",JSON.stringify(config))
 }
 
 // Update Dark Mode Button Status on page load
